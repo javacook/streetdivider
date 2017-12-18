@@ -1,3 +1,5 @@
+package de.kotlincook.textmining.streetdivider
+
 data class Location(val street: String,
                     val houseNumber: Int?,
                     val houseNumberAffix: String?) {
@@ -16,93 +18,31 @@ data class Location(val street: String,
 }
 
 
-fun String.normStreetSuffixOld(): String {
-    val thisEnlarged = this + " "
-    val thisEnlargedToLower = thisEnlarged.toLowerCase()
-    return when {
-        thisEnlargedToLower.contains("straße ") ->
-            thisEnlarged.replace("straße ", "str. ").replace("Straße ", "Str. ").trim()
-        thisEnlargedToLower.contains("strasse ") ->
-            thisEnlarged.replace("strasse ", "str. ").replace("Strasse ", "Str. ").trim()
-        else -> this
-    }
-}
-
-fun String.normStreetSuffix(): String {
-    val thisEnlarged = this + " "
-    val thisEnlargedToLower = thisEnlarged.toLowerCase()
-    return when {
-        this.contains(Regex("""straße^|straße[^A-Za-z]+""")) ->
-            thisEnlarged.replace("straße", "str.").replace("Straße", "Str.").trim()
-        thisEnlargedToLower.contains(Regex("""strasse^|strasse[^A-Za-z]+""")) ->
-            thisEnlarged.replace("strasse", "str.").replace("Strasse", "Str.").trim()
-        else -> this
-    }
-}
-
-
-fun String.normStreetName(): String {
-    var result = ""
-    for (ch in this) {
-        if (ch.isLetterOrDigit()) {
-            val lowerCh = ch.toLowerCase()
-            result += when (lowerCh) {
-                'ä' -> "ae"
-                'ö' -> "oe"
-                'ü' -> "ue"
-                'ß' -> "ss"
-                else -> lowerCh.toString()
-            }
-        }
-    }
-    return result
-}
-
-fun Char.isValidStreetSpecialChar(): Boolean {
-    return ".- ".contains(this);
-}
-
-fun String.divideIntoStreetAndHouseNoWihAffixDueToDict(normedPrefix: String): Pair<String, String> {
-    var i = 0
-    for (ch in normedPrefix) {
-        if (this[i].toLowerCase() == ch) i++
-        while (this[i].isValidStreetSpecialChar()) i++
-    }
-    var street = this.substring(0, i)
-    var houseNoWithAffix = this.substring(i)
-    if (normedPrefix.endsWith("str")) {
-        if (houseNoWithAffix.startsWith("aße")) {
-            street += "aße"
-            houseNoWithAffix = houseNoWithAffix.substring(3)
-        }
-        if (houseNoWithAffix.startsWith("asse")) {
-            street += "asse"
-            houseNoWithAffix = houseNoWithAffix.substring(4)
-        }
-    }
-    return Pair(street.trim(), houseNoWithAffix.trim())
-}
-
-
 /**
  * https://www.strassenkatalog.de/str/
  * http://www.strassen-in-deutschland.de/
  */
 open class StreetDivider(val dictionary: Dictionary) {
     constructor(streets: List<String>) : this(Dictionary(streets.map {
-        t -> t.normStreetSuffix().normStreetName()
+        t -> t.standardizeStreetName()
     }))
     constructor(vararg streets:String) : this(streets.asList())
     constructor() : this(StreetReader.streets)
 
 
     open fun parse(str: String): Location? {
-        val streetOfDictionary = dictionary.prefixOf(str.normStreetName())
-        if (streetOfDictionary != null) {
-            val (street, houseNoWithAffix) = str.divideIntoStreetAndHouseNoWihAffixDueToDict(streetOfDictionary)
-            val houseNoAndAffix = parserHouseNoAndAffix(houseNoWithAffix)
-            if (houseNoAndAffix != null) {
-                return Location.create(street, houseNoAndAffix.houseNumber, houseNoAndAffix.affix)
+        var prefixOfStr = str
+        for (ch in str.reversed()) {
+            if (dictionary.contains(prefixOfStr.standardizeStreetName())) break
+            prefixOfStr = prefixOfStr.removeSuffix(ch.toString())
+        }
+
+        if (prefixOfStr.isNotEmpty()) {
+            val street = prefixOfStr.removeTrailingSpecialChars()
+            val houseNoWithAffix = str.substring(prefixOfStr.length)
+            val houseNoAffixPair = parserHouseNoAndAffix(houseNoWithAffix)
+            if (houseNoAffixPair != null) {
+                return Location.create(street, houseNoAffixPair.houseNumber, houseNoAffixPair.affix)
             }
         }
         val (street, houseNoWithAffix) = str.divideIntoStreetAndHouseNoWihAffixDueToNumber()
@@ -120,17 +60,16 @@ open class StreetDivider(val dictionary: Dictionary) {
         return Location(str.trim(), null, null)
     }
 
-    data class HouseNumberAndAffix(val houseNumber: String, var affix: String) {
+    data class HouseNumberAffixPair(val houseNumber: String, var affix: String) {
         constructor() : this("", "")
     }
 
-    fun parserHouseNoAndAffix(str: String): HouseNumberAndAffix? {
+    fun parserHouseNoAndAffix(str: String): HouseNumberAffixPair? {
         // Beispiel: "Nr. 25 - 27 b"
-        val regexStrassenNummer = Regex("""^,? ?(Nr\.)? *(\d+)(.*)$""")
+        val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
         val matchStrassenNr = regexStrassenNummer.find(str)
         if (matchStrassenNr != null) {
-            println("***************" + matchStrassenNr.groupValues)
-            return HouseNumberAndAffix(matchStrassenNr.groupValues[2], matchStrassenNr.groupValues[3].trim())
+            return HouseNumberAffixPair(matchStrassenNr.groupValues[2], matchStrassenNr.groupValues[3].trim())
         }
         return null
     }
@@ -148,15 +87,5 @@ open class StreetDivider(val dictionary: Dictionary) {
         }
         return Pair(this.trim(), null)
     }
-
-
 }
 
-fun main(args: Array<String>) {
-    println("Kultstraße 3".normStreetSuffix().normStreetName())
-    println("straße73".normStreetSuffix().normStreetName())
-//    println("Garten12Weg".normStreetName())
-//    println(StreetDivider().parse("Heideweg2a"))
-//    println(StreetDivider().parse("M1, Nr. 3"))
-//    println(StreetDivider().parse("1. Wasserstro 3b"))
-}

@@ -1,3 +1,5 @@
+package de.kotlincook.textmining.streetdivider
+
 import java.nio.charset.Charset
 
 object StreetReader {
