@@ -6,7 +6,7 @@ object StreetReader {
     init {
         val resource = this::class.java.classLoader.getResource("specialstreets.txt")
         val readText = resource.readText(Charset.defaultCharset())
-        streets = readText.split(System.lineSeparator())
+        streets = readText.split(System.lineSeparator()).map({it.trim()})
     }
 }
 
