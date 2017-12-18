@@ -15,7 +15,6 @@
 1. Tillweg
 1. Wallstraße
 1. Wasserstraße
-1. Wasserstraße
 1. Werderstraße
 117er Ehrenhof
 164er Ring
@@ -33,7 +32,6 @@
 2. Südwieke
 2. Wallstraße
 2. Wasserstraße
-2. Wasserstraße
 2. Werderstraße
 22-er Straße
 3-K-Weg
@@ -47,16 +45,13 @@
 3. Südwieke
 3. Wallstraße
 3. Wasserstraße
-3. Wasserstraße
 4. Achtertwiete
-4. Achtertwiete 2
 4. Kanal
 4. Ringstraße
 4. Str.
 4. Südwieke
 4. Südwieke
 4. Wallstraße
-4. Wasserstraße
 4. Wasserstraße
 5. Ringstraße
 5. Str.
