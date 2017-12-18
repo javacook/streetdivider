@@ -1,5 +1,3 @@
-import java.nio.charset.Charset
-
 data class Location(val street: String,
                     val houseNumber: Int?,
                     val houseNumberAffix: String?) {
@@ -51,16 +49,29 @@ fun Char.isValidStreetSpecialChar(): Boolean {
     return ".- ".contains(this);
 }
 
-fun String.removeFromBeginning(normedPrefix: String): Pair<String, String> {
+fun String.divideIntoStreetAndHouseNoWihAffixDueToDict(normedPrefix: String): Pair<String, String> {
     var i = 0
     for (ch in normedPrefix) {
         if (this[i].toLowerCase() == ch) i++
         while (this[i].isValidStreetSpecialChar()) i++
     }
-    return Pair(this.substring(0, i).trim(), this.substring(i).trim())
+    var streetCandidate = this.substring(0, i)
+    var houseNoWithAffix = this.substring(i)
+    if (normedPrefix.endsWith("str")) {
+        if (houseNoWithAffix.startsWith("aße")) {
+            streetCandidate += "aße"
+            houseNoWithAffix = houseNoWithAffix.substring(3)
+        }
+        if (houseNoWithAffix.startsWith("asse")) {
+            streetCandidate += "asse"
+            houseNoWithAffix = houseNoWithAffix.substring(4)
+        }
+    }
+    return Pair(streetCandidate.trim(), houseNoWithAffix.trim())
 }
 
-fun String.divideAtFirstNumber(): Pair<String, String?> {
+
+fun String.divideIntoStreetAndHouseNoWihAffixDueToNumber(): Pair<String, String?> {
     for (i in 0 until this.length) {
         if (this[i].isDigit()) return Pair(this.substring(0, i).trim(), this.substring(i).trim())
     }
@@ -78,20 +89,20 @@ open class StreetDivider(val dictionary: Dictionary) {
     open fun parse(str: String): Location? {
         val streetOfDictionary = dictionary.prefixOf(str.normStreetName())
         if (streetOfDictionary != null) {
-            val (street, houseNoWithAffix) = str.removeFromBeginning(streetOfDictionary)
-            val houseNoAndAffix = parserHouseNoAndAffix2(houseNoWithAffix)
+            val (street, houseNoWithAffix) = str.divideIntoStreetAndHouseNoWihAffixDueToDict(streetOfDictionary)
+            val houseNoAndAffix = parserHouseNoAndAffix(houseNoWithAffix)
             if (houseNoAndAffix != null) {
                 return Location.create(street, houseNoAndAffix.houseNumber, houseNoAndAffix.affix)
             }
         }
-        val (street, houseNoWithAffix) = str.divideAtFirstNumber()
+        val (street, houseNoWithAffix) = str.divideIntoStreetAndHouseNoWihAffixDueToNumber()
         if (houseNoWithAffix == null) {
             return Location.create(street, null, null)
         }
         if (street == "") {
             return Location(str.trim(), null, null)
         }
-        val temp = parserHouseNoAndAffix2(houseNoWithAffix)
+        val temp = parserHouseNoAndAffix(houseNoWithAffix)
         if (temp != null) {
             return Location.create(street, temp.houseNumber, temp.affix)
         }
@@ -103,7 +114,7 @@ open class StreetDivider(val dictionary: Dictionary) {
         constructor() : this("", "")
     }
 
-    fun parserHouseNoAndAffix2(str: String): HouseNumberAndAffix? {
+    fun parserHouseNoAndAffix(str: String): HouseNumberAndAffix? {
         // Beispiel: "Nr. 25 - 27 b"
         val regexStrassenNummer = Regex("""^,? ?(Nr\.)? *(\d+)(.*)$""")
         val matchStrassenNr = regexStrassenNummer.find(str)
@@ -111,7 +122,6 @@ open class StreetDivider(val dictionary: Dictionary) {
             println("***************" + matchStrassenNr.groupValues)
             return HouseNumberAndAffix(matchStrassenNr.groupValues[2], matchStrassenNr.groupValues[3].trim())
         }
-
         return null
     }
 }
@@ -126,5 +136,6 @@ fun main(args: Array<String>) {
 //    println("Kultstraße 3".normStreetSuffix())
 //    println("Garten12Weg".normStreetName())
 //    println(StreetDivider().parse("Heideweg2a"))
-    println(StreetDivider().parse("M1, Nr. 3"))
+//    println(StreetDivider().parse("M1, Nr. 3"))
+    println(StreetDivider().parse("1. Wasserstro 3b"))
 }
