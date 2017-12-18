@@ -1,3 +1,5 @@
+package de.kotlincook.textmining.streetdivider
+
 import org.junit.Test
 import org.junit.Assert.assertEquals
 
@@ -5,7 +7,7 @@ import org.junit.Assert.assertEquals
 class StreetDividerTest {
     
     val streetDivider = StreetDivider(
-            "Bundesstraße1", "Bundesstr 2", "Strasse73" ,"1 Maja",
+            "Bundesstraße1", "Bundesstrasse 2", "Strasse73" ,"1 Maja",
             "b4", "d4", "Straße des 18. Oktober")
 
     @Test
@@ -123,21 +125,21 @@ class StreetDividerTest {
     @Test
     fun testZahlenstrasseMitZusatz2() {
         val actual = streetDivider.parse("1. Maja 3a-d")
-        val expected = Location("1 Maja", 3, "a-d")
+        val expected = Location("1. Maja", 3, "a-d")
         assertEquals(expected, actual)
     }
 
     @Test
     fun testZahlenstrasseMitZusatz3() {
         val actual = streetDivider.parse("1Maja 34 a-d")
-        val expected = Location("1 Maja", 34, "a-d")
+        val expected = Location("1Maja", 34, "a-d")
         assertEquals(expected, actual)
     }
 
     @Test
     fun testZahlenstrasseMitZusatz4() {
         val actual = streetDivider.parse("1-Maja 34a-d")
-        val expected = Location("1 Maja", 34, "a-d")
+        val expected = Location("1-Maja", 34, "a-d")
         assertEquals(expected, actual)
     }
 
