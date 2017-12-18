@@ -191,6 +191,8 @@ S1
 S4
 S5
 S6
+Straße des 17. Juni
+Straße des 18. Oktober
 T1
 T1
 T2
