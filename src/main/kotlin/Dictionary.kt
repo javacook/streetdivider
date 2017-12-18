@@ -1,9 +1,11 @@
-import Dictionary.Matching.*
+package de.kotlincook.textmining.streetdivider
+
+import de.kotlincook.textmining.streetdivider.Dictionary.Matching.*
 import java.lang.Math.min
 import java.util.TreeSet
 
-
 class Dictionary {
+
     constructor(vararg words: String) {
         treeSet.addAll(words)
     }
