@@ -172,9 +172,44 @@ class StreetDividerTest {
     }
 
     @Test
-    fun testD4() {
+    fun testD_4() {
         val actual = streetDivider.parse("D 4, 3")
         val expected = Location("D 4", 3, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testD43() {
+        val actual = streetDivider.parse("D4, 3")
+        val expected = Location("D4", 3, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testD4NrDot_3() {
+        val actual = streetDivider.parse("D4, Nr. 3")
+        val expected = Location("D4", 3, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testD4NrDot3() {
+        val actual = streetDivider.parse("D4, Nr.3")
+        val expected = Location("D4", 3, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testD4Nr_3() {
+        val actual = streetDivider.parse("D4, Nr 3")
+        val expected = Location("D4", 3, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testD4Nr3() {
+        val actual = streetDivider.parse("D4, Nr3")
+        val expected = Location("D4", 3, null)
         assertEquals(expected, actual)
     }
 
