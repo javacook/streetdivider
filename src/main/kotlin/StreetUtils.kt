@@ -42,11 +42,6 @@ fun String.standardizeStreetName(): String {
 }
 
 
-fun Char.isValidStreetSpecialChar(): Boolean {
-    return ".- ".contains(this);
-}
-
-
 
 fun main(args: Array<String>) {
     println("Kultstraße 3".standardizeStreetSuffix().standardizeLetters())
