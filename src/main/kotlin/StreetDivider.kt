@@ -57,7 +57,7 @@ open class StreetDivider(private val dictionary: Dictionary) {
         }
         try {
             with(parseHouseNoAndAffix(houseNoWithAffix)) {
-                return Location.create(street, houseNumber, houseNoAffix)
+                return Location.create(street.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
             }
         } catch (e: ParseException) {
             return Location(input.trim(), null, null)
