@@ -234,4 +234,11 @@ class StreetDividerTest {
         assertEquals(expected, actual)
     }
 
+    @Test
+    fun testNummerstrMitKomma() {
+        val actual = streetDivider.parse("374, 4")
+        val expected = Location("374", 4, null)
+        assertEquals(expected, actual)
+    }
+
 }
