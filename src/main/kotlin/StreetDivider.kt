@@ -37,14 +37,15 @@ open class StreetDivider(private val dictionary: Dictionary) {
         }
 
         if (streetCandidate.isNotEmpty()) {
-            val street = streetCandidate.removeTrailingSpecialChars()
             val houseNoWithAffix = input.substring(streetCandidate.length)
-            try {
-                with(parseHouseNoAndAffix(houseNoWithAffix)) {
-                    return Location.create(street, houseNumber, houseNoAffix)
+            if (!streetCandidate.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
+                try {
+                    with(parseHouseNoAndAffix(houseNoWithAffix)) {
+                        return Location.create(streetCandidate.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
+                    }
+                } catch (e: ParseException) {
+                    return Location(input, null, null)
                 }
-            } catch (e: ParseException) {
-                return Location(input.trim(), null, null)
             }
         }
         val (street, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(input)
@@ -101,8 +102,8 @@ open class StreetDivider(private val dictionary: Dictionary) {
 }
 
 fun main(args: Array<String>) {
-    println("Vollmer"[3])
     val streetDivider = StreetDivider()
-    println(streetDivider.parse("M4N"))
+    println(streetDivider.parse("M45"))
+//    println(streetDivider.parse("X45"))
 }
 
