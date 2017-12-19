@@ -9,7 +9,6 @@ data class Location(val street: String,
     companion object {
         fun create(street: String, houseNumber: String?, houseNummerExt: String?): Location {
             val houseNumberInt = houseNumber?.trim()?.toInt()
-            require(houseNumberInt == null || houseNumberInt > 0)
             return Location(street.trim(),
                             houseNumberInt,
                             if (houseNummerExt == null || houseNummerExt.isBlank()) null
@@ -30,37 +29,37 @@ open class StreetDivider(private val dictionary: Dictionary) {
     constructor(vararg streets:String) : this(streets.asList())
     constructor() : this(StreetReader.streets)
 
-    open fun parse(str: String): Location {
-        var prefixOfStr = str
-        for (ch in str.reversed()) {
-            if (dictionary.contains(prefixOfStr.standardizeStreetName())) break
-            prefixOfStr = prefixOfStr.removeSuffix(ch.toString())
+    open fun parse(input: String): Location {
+        var streetCandidate = input.trim()
+        for (ch in streetCandidate.reversed()) {
+            if (dictionary.contains(streetCandidate.standardizeStreetName())) break
+            streetCandidate = streetCandidate.removeSuffix(ch.toString())
         }
 
-        if (prefixOfStr.isNotEmpty()) {
-            val street = prefixOfStr.removeTrailingSpecialChars()
-            val houseNoWithAffix = str.substring(prefixOfStr.length)
+        if (streetCandidate.isNotEmpty()) {
+            val street = streetCandidate.removeTrailingSpecialChars()
+            val houseNoWithAffix = input.substring(streetCandidate.length)
             try {
                 with(parseHouseNoAndAffix(houseNoWithAffix)) {
                     return Location.create(street, houseNumber, houseNoAffix)
                 }
             } catch (e: ParseException) {
-                return Location(str.trim(), null, null)
+                return Location(input.trim(), null, null)
             }
         }
-        val (street, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(str)
+        val (street, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(input)
         if (houseNoWithAffix == null) {
             return Location.create(street, null, null)
         }
         if (street == "") {
-            return Location(str.trim(), null, null)
+            return Location(input.trim(), null, null)
         }
         try {
             with(parseHouseNoAndAffix(houseNoWithAffix)) {
                 return Location.create(street, houseNumber, houseNoAffix)
             }
         } catch (e: ParseException) {
-            return Location(str.trim(), null, null)
+            return Location(input.trim(), null, null)
         }
     }
 
@@ -80,20 +79,29 @@ open class StreetDivider(private val dictionary: Dictionary) {
     }
 
     /**
-     * Searches the first occurance of a number in me (street, house no und houseNoAffix) and
-     * divides
+     * Searches the first occurance of a number in me (street, house no und houseNoAffix) except
+     * the input is starting with diggits and divides <code>input</code> in front of the number
+     * if exits
      */
-    open protected fun divideIntoStreetAndHouseNoWihAffixDueToNumber(str: String): Pair<String, String?> {
-        for (i in 0 until str.length) {
-            if (str[i].isDigit()) {
-                return Pair(str.substring(0, i).trim(), str.substring(i).trim())
+    open protected fun divideIntoStreetAndHouseNoWihAffixDueToNumber(input: String): Pair<String, String?> {
+        // Skipping over a possibly existing number prefix:
+        var posAfterNumberPrefix = 0
+        while (posAfterNumberPrefix < input.length) {
+            if (!input[posAfterNumberPrefix++].isDigit()) break
+        }
+
+        for (i in posAfterNumberPrefix until input.length) {
+            if (input[i].isDigit()) {
+                return Pair(input.substring(0, i).trim(), input.substring(i).trim())
             }
         }
-        return Pair(str.trim(), null)
+        return Pair(input, null)
     }
+
 }
 
 fun main(args: Array<String>) {
+    println("Vollmer"[3])
     val streetDivider = StreetDivider()
     println(streetDivider.parse("M4N"))
 }
