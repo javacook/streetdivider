@@ -41,6 +41,13 @@ fun String.standardizeStreetName(): String {
     return this.standardizeStreetSuffix().standardizeLetters();
 }
 
+fun String.startsWithDigit(): Boolean {
+    return this.length > 0 && this.first().isDigit()
+}
+
+fun String.endsWithDigit(): Boolean {
+    return this.length > 0 && this.last().isDigit()
+}
 
 
 fun main(args: Array<String>) {
