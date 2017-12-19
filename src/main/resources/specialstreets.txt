@@ -123,6 +123,7 @@ S1
 S4
 S5
 S6
+Straße des 13. Januar
 Straße des 17. Juni
 Straße des 18. Oktober
 T1
