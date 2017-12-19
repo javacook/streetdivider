@@ -6,15 +6,21 @@ data class Location(val street: String,
                     val houseNumber: Int?,
                     val houseNoAffix: String?) {
 
-    companion object {
-        fun create(street: String, houseNumber: String?, houseNummerExt: String?): Location {
-            val houseNumberInt = houseNumber?.trim()?.toInt()
-            return Location(street.trim(),
-                            houseNumberInt,
-                            if (houseNummerExt == null || houseNummerExt.isBlank()) null
-                            else houseNummerExt.trim())
-        }
-    }
+    constructor(street: String, houseNumber: String, houseNoAffix: String?) :
+            this(street, houseNumber.toInt(),
+            if (houseNoAffix?.isBlank()?: false) null else houseNoAffix)
+
+    constructor(street: String) : this(street, null, null)
+
+//    companion object {
+//        fun create(street: String, houseNumber: String?, houseNummerExt: String?): Location {
+//            val houseNumberInt = houseNumber?.trim()?.toInt()
+//            return Location(street.trim(),
+//                            houseNumberInt,
+//                            if (houseNummerExt == null || houseNummerExt.isBlank()) null
+//                            else houseNummerExt.trim())
+//        }
+//    }
 }
 
 
@@ -30,52 +36,48 @@ open class StreetDivider(private val dictionary: Dictionary) {
     constructor() : this(StreetReader.streets)
 
     open fun parse(input: String): Location {
-        var streetCandidate = input.trim()
-        for (ch in streetCandidate.reversed()) {
-            if (dictionary.contains(streetCandidate.standardizeStreetName())) break
-            streetCandidate = streetCandidate.removeSuffix(ch.toString())
+        val inputTrimmed = input.trim()
+        var street1 = inputTrimmed
+
+        for (ch in street1.reversed()) {
+            if (dictionary.contains(street1.standardizeStreetName())) break
+            street1 = street1.removeSuffix(ch.toString())
         }
 
-        if (streetCandidate.isNotEmpty()) {
-            val houseNoWithAffix = input.substring(streetCandidate.length)
-            if (!streetCandidate.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
+        if (street1.isNotEmpty()) {
+            val houseNoWithAffix = input.substring(street1.length)
+            if (!street1.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
                 try {
-                    with(parseHouseNoAndAffix(houseNoWithAffix)) {
-                        return Location.create(streetCandidate.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
-                    }
+                    val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
+                    return Location(street1.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
                 } catch (e: ParseException) {
-                    return Location(input, null, null)
+                    return Location(inputTrimmed)
                 }
             }
         }
-        val (street, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(input)
+        val (street2, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(inputTrimmed)
         if (houseNoWithAffix == null) {
-            return Location.create(street, null, null)
+            return Location(inputTrimmed)
         }
-        if (street == "") {
-            return Location(input.trim(), null, null)
+        if (street2 == "") {
+            return Location(inputTrimmed)
         }
         try {
-            with(parseHouseNoAndAffix(houseNoWithAffix)) {
-                return Location.create(street.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
-            }
+            val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
+            return Location(street2.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
         } catch (e: ParseException) {
-            return Location(input.trim(), null, null)
+            return Location(inputTrimmed)
         }
     }
 
-    data class HouseNumberAffixPair(val houseNumber: String?, var houseNoAffix: String?) {
-        constructor() : this(null, null)
-    }
-
-    open protected fun parseHouseNoAndAffix(str: String): HouseNumberAffixPair {
+    open protected fun divideHouseNoAndAffix(str: String): Pair<String, String?> {
         // Beispiel: "Nr. 25 - 27 b"
-        if (str == "") return HouseNumberAffixPair()
+        if (str == "") return Pair("", null)
         val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
         val matchStrassenNr = regexStrassenNummer.find(str)
         if (matchStrassenNr == null) throw ParseException(str, -1)
         return with(matchStrassenNr) {
-            HouseNumberAffixPair(groupValues[2], groupValues[3].trim())
+            Pair(groupValues[2], groupValues[3].trim())
         }
     }
 
