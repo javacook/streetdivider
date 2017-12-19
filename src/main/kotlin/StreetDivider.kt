@@ -1,12 +1,13 @@
 package de.kotlincook.textmining.streetdivider
 
+import java.text.ParseException
+
 data class Location(val street: String,
                     val houseNumber: Int?,
-                    val houseNumberAffix: String?) {
+                    val houseNoAffix: String?) {
 
     companion object {
         fun create(street: String, houseNumber: String?, houseNummerExt: String?): Location {
-            require(street != "")
             val houseNumberInt = houseNumber?.trim()?.toInt()
             require(houseNumberInt == null || houseNumberInt > 0)
             return Location(street.trim(),
@@ -22,15 +23,14 @@ data class Location(val street: String,
  * https://www.strassenkatalog.de/str/
  * http://www.strassen-in-deutschland.de/
  */
-open class StreetDivider(val dictionary: Dictionary) {
+open class StreetDivider(private val dictionary: Dictionary) {
     constructor(streets: List<String>) : this(Dictionary(streets.map {
         t -> t.standardizeStreetName()
     }))
     constructor(vararg streets:String) : this(streets.asList())
     constructor() : this(StreetReader.streets)
 
-
-    open fun parse(str: String): Location? {
+    open fun parse(str: String): Location {
         var prefixOfStr = str
         for (ch in str.reversed()) {
             if (dictionary.contains(prefixOfStr.standardizeStreetName())) break
@@ -40,52 +40,61 @@ open class StreetDivider(val dictionary: Dictionary) {
         if (prefixOfStr.isNotEmpty()) {
             val street = prefixOfStr.removeTrailingSpecialChars()
             val houseNoWithAffix = str.substring(prefixOfStr.length)
-            val houseNoAffixPair = parserHouseNoAndAffix(houseNoWithAffix)
-            if (houseNoAffixPair != null) {
-                return Location.create(street, houseNoAffixPair.houseNumber, houseNoAffixPair.affix)
+            try {
+                with(parseHouseNoAndAffix(houseNoWithAffix)) {
+                    return Location.create(street, houseNumber, houseNoAffix)
+                }
+            } catch (e: ParseException) {
+                return Location(str.trim(), null, null)
             }
         }
-        val (street, houseNoWithAffix) = str.divideIntoStreetAndHouseNoWihAffixDueToNumber()
+        val (street, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(str)
         if (houseNoWithAffix == null) {
             return Location.create(street, null, null)
         }
         if (street == "") {
             return Location(str.trim(), null, null)
         }
-        val temp = parserHouseNoAndAffix(houseNoWithAffix)
-        if (temp != null) {
-            return Location.create(street, temp.houseNumber, temp.affix)
+        try {
+            with(parseHouseNoAndAffix(houseNoWithAffix)) {
+                return Location.create(street, houseNumber, houseNoAffix)
+            }
+        } catch (e: ParseException) {
+            return Location(str.trim(), null, null)
         }
-
-        return Location(str.trim(), null, null)
     }
 
-    data class HouseNumberAffixPair(val houseNumber: String, var affix: String) {
-        constructor() : this("", "")
+    data class HouseNumberAffixPair(val houseNumber: String?, var houseNoAffix: String?) {
+        constructor() : this(null, null)
     }
 
-    fun parserHouseNoAndAffix(str: String): HouseNumberAffixPair? {
+    open protected fun parseHouseNoAndAffix(str: String): HouseNumberAffixPair {
         // Beispiel: "Nr. 25 - 27 b"
+        if (str == "") return HouseNumberAffixPair()
         val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
         val matchStrassenNr = regexStrassenNummer.find(str)
-        if (matchStrassenNr != null) {
-            return HouseNumberAffixPair(matchStrassenNr.groupValues[2], matchStrassenNr.groupValues[3].trim())
+        if (matchStrassenNr == null) throw ParseException(str, -1)
+        return with(matchStrassenNr) {
+            HouseNumberAffixPair(groupValues[2], groupValues[3].trim())
         }
-        return null
     }
-
 
     /**
-     * Searches the first occurance of a number in me (street, house no und affix) and
+     * Searches the first occurance of a number in me (street, house no und houseNoAffix) and
      * divides
      */
-    fun String.divideIntoStreetAndHouseNoWihAffixDueToNumber(): Pair<String, String?> {
-        for (i in 0 until this.length) {
-            if (this[i].isDigit()) {
-                return Pair(this.substring(0, i).trim(), this.substring(i).trim())
+    open protected fun divideIntoStreetAndHouseNoWihAffixDueToNumber(str: String): Pair<String, String?> {
+        for (i in 0 until str.length) {
+            if (str[i].isDigit()) {
+                return Pair(str.substring(0, i).trim(), str.substring(i).trim())
             }
         }
-        return Pair(this.trim(), null)
+        return Pair(str.trim(), null)
     }
+}
+
+fun main(args: Array<String>) {
+    val streetDivider = StreetDivider()
+    println(streetDivider.parse("M4N"))
 }
 
