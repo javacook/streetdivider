@@ -1,4 +1,5 @@
-import de.kotlincook.textmining.streetdivider.StreetDivider
+package de.kotlincook.textmining.streetdivider
+
 import javafx.application.Application
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.text.FontWeight
@@ -9,7 +10,6 @@ class Styles : Stylesheet() {
         label {
             fontSize = 14.px
             fontWeight = FontWeight.NORMAL
-//            backgroundColor += c("#cecece")
         }
     }
 }
@@ -24,7 +24,7 @@ class MyView: View() {
     val houseNoAffixProp = SimpleStringProperty()
 
     override val root = form {
-        fieldset("Geben Sie eine Straße mit Hausnummer und Zusatz ein") {
+        fieldset("Geben Sie eine Straße mit Hausnummer und Zusatz ein:") {
             field("Eingabe") {
                 textfield() {
                     textProperty().addListener { _, _, new ->
