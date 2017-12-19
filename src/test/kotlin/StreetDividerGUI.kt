@@ -27,7 +27,7 @@ class MyView: View() {
         fieldset("Geben Sie eine Straße mit Hausnummer und Zusatz ein") {
             field("Eingabe") {
                 textfield() {
-                    textProperty().addListener { obs, old, new ->
+                    textProperty().addListener { _, _, new ->
                         with(streetDivider.parse(new)) {
                             streetProp.set(street)
                             houseNumberProp.set(houseNumber?.toString())
