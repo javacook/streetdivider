@@ -160,14 +160,14 @@ class StreetDividerTest {
     @Test
     fun testUnbekannt1() {
         val actual = streetDivider.parse("1. Unbekannte Str. 5")
-        val expected = Location("1. Unbekannte Str. 5", null, null)
+        val expected = Location("1. Unbekannte Str.", 5, null)
         assertEquals(expected, actual)
     }
 
     @Test
     fun testUnbekannt2() {
-        val actual = streetDivider.parse("Unbekannt 1 Unbekannt 5")
-        val expected = Location("Unbekannt", 1, "Unbekannt 5")
+        val actual = streetDivider.parse("Unbekannt 1 Zusatz 5")
+        val expected = Location("Unbekannt", 1, "Zusatz 5")
         assertEquals(expected, actual)
     }
 
@@ -217,6 +217,20 @@ class StreetDividerTest {
     fun testB41010a() {
         val actual = streetDivider.parse("B 4 10–10a")
         val expected = Location("B 4", 10, "–10a")
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testB45() {
+        val actual = streetDivider.parse("B45")
+        val expected = Location("B", 45, null)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testB4_5() {
+        val actual = streetDivider.parse("B4 5")
+        val expected = Location("B4", 5, null)
         assertEquals(expected, actual)
     }
 
