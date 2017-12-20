@@ -95,21 +95,20 @@ open class StreetDivider(private val dictionary: Dictionary) {
 fun main(args: Array<String>) {
     val streetDivider = StreetDivider()
 //    streetDivider.divideIntoHouseNoAndAffix("Hallo")
+//
+//    for (cnt in 0..10000){
+//        for (len in 0..100) {
+//            var input = ""
+//            for (i in 0 until len) {
+//                val zahl: Int = (Math.random() * 65536).toInt()
+//                input += (zahl.absoluteValue % 65536).toChar();
+//            }
+//            // println(streetDivider.parse(input))
+//        }
+//    }
 
 
-    for (cnt in 0..10000){
-        for (len in 0..100) {
-            var input = ""
-            for (i in 0 until len) {
-                val zahl: Int = (Math.random() * 65536).toInt()
-                input += (zahl.absoluteValue % 65536).toChar();
-            }
-            // println(streetDivider.parse(input))
-        }
-    }
-
-
-//    println(streetDivider.parse("M45"))
+    println(streetDivider.parse("Straße 10 12"))
 //    println(streetDivider.parse("X45"))
 }
 
