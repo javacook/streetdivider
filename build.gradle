@@ -1,5 +1,5 @@
 group 'de.kotlincook.textmining'
-version '1.0'
+version '1.2'
 
 buildscript {
     ext.kotlin_version = '1.2.10'
