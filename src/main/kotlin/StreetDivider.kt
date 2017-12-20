@@ -3,24 +3,11 @@ package de.kotlincook.textmining.streetdivider
 import java.text.ParseException
 
 data class Location(val street: String,
-                    val houseNumber: Int?,
-                    val houseNoAffix: String?) {
+                    val houseNumber: Int? = null,
+                    val houseNoAffix: String? = null) {
 
-    constructor(street: String, houseNumber: String, houseNoAffix: String?) :
-            this(street, houseNumber.toInt(),
-            if (houseNoAffix?.isBlank()?: false) null else houseNoAffix)
-
-    constructor(street: String) : this(street, null, null)
-
-//    companion object {
-//        fun create(street: String, houseNumber: String?, houseNummerExt: String?): Location {
-//            val houseNumberInt = houseNumber?.trim()?.toInt()
-//            return Location(street.trim(),
-//                            houseNumberInt,
-//                            if (houseNummerExt == null || houseNummerExt.isBlank()) null
-//                            else houseNummerExt.trim())
-//        }
-//    }
+    constructor(street: String, houseNumberStr: String?, houseNoAffix: String?) :
+            this(street, houseNumberStr?.subString(0,6)?.toInt(), houseNoAffix)
 }
 
 
@@ -39,7 +26,7 @@ open class StreetDivider(private val dictionary: Dictionary) {
         val inputTrimmed = input.trim()
         var street1 = inputTrimmed
 
-        for (ch in street1.reversed()) {
+        for (ch in inputTrimmed.reversed()) {
             if (dictionary.contains(street1.standardizeStreetName())) break
             street1 = street1.removeSuffix(ch.toString())
         }
@@ -49,7 +36,9 @@ open class StreetDivider(private val dictionary: Dictionary) {
             if (!street1.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
                 try {
                     val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
-                    return Location(street1.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
+                    return Location(
+                            street1.removeTrailingSpecialChars(),
+                            houseNumber, houseNoAffix?.emptyToNull())
                 } catch (e: ParseException) {
                     return Location(inputTrimmed)
                 }
@@ -64,15 +53,15 @@ open class StreetDivider(private val dictionary: Dictionary) {
         }
         try {
             val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
-            return Location(street2.removeTrailingSpecialChars(), houseNumber, houseNoAffix)
+            return Location(street2.removeTrailingSpecialChars(), houseNumber, houseNoAffix?.emptyToNull())
         } catch (e: ParseException) {
             return Location(inputTrimmed)
         }
     }
 
-    open protected fun divideHouseNoAndAffix(str: String): Pair<String, String?> {
-        // Beispiel: "Nr. 25 - 27 b"
-        if (str == "") return Pair("", null)
+    open protected fun divideHouseNoAndAffix(str: String): Pair<String?, String?> {
+        // Example: "Nr. 25 - 27 b"
+        if (str == "") return Pair(null, null)
         val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
         val matchStrassenNr = regexStrassenNummer.find(str)
         if (matchStrassenNr == null) throw ParseException(str, -1)
@@ -82,9 +71,8 @@ open class StreetDivider(private val dictionary: Dictionary) {
     }
 
     /**
-     * Searches the first occurance of a number in me (street, house no und houseNoAffix) except
-     * the input is starting with diggits and divides <code>input</code> in front of the number
-     * if exits
+     * Searches for the first occurrence of a number in me (street, house no und houseNoAffix),
+     * except the input is starting with digits and divides <code>input</code> in front of the number
      */
     open protected fun divideIntoStreetAndHouseNoWihAffixDueToNumber(input: String): Pair<String, String?> {
         // Skipping over a possibly existing number prefix:
