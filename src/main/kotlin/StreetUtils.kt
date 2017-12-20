@@ -1,5 +1,7 @@
 package de.kotlincook.textmining.streetdivider
 
+import java.text.CharacterIterator
+
 fun String.removeTrailingSpecialChars():String {
     var result = this
     for (ch in this.reversed()) {
@@ -14,12 +16,13 @@ fun String.removeTrailingSpecialChars():String {
 }
 
 
-fun String.standardizeLetters(): String {
+fun String.standardizeLetters1(): String {
     var result = ""
     for (ch in this) {
         if (ch.isLetterOrDigit()) {
             val lowerCh = ch.toLowerCase()
             result += when (lowerCh) {
+                'é','è','ê' -> "e"
                 'ä' -> "ae"
                 'ö' -> "oe"
                 'ü' -> "ue"
@@ -30,6 +33,32 @@ fun String.standardizeLetters(): String {
     }
     return result
 }
+
+fun String.standardizeLetters(): String {
+    var result = ""
+    for (pos in 0..this.lastIndex) {
+        val lowerCh = this[pos].toLowerCase()
+        if (lowerCh.isLetterOrDigit()) {
+            result += when (lowerCh) {
+                'é','è','ê' -> "e"
+                'ä' -> "ae"
+                'ö' -> "oe"
+                'ü' -> "ue"
+                'ß' -> "ss"
+                else -> lowerCh.toString()
+            }
+        }
+        else if (this.charAt(pos-1)?.isDigit()?:false && this.charAt(pos+1)?.isDigit()?:false) {
+            result += " "
+        }
+    }
+    return result
+}
+
+fun String.charAt(pos: Int): Char? {
+    return if (pos < 0 || pos > this.lastIndex) null else this[pos]
+}
+
 
 fun String.standardizeStreetSuffix(): String {
     if (this.length < 6) return this
@@ -64,7 +93,7 @@ fun String.subString(from: Int, to: Int): String {
 fun main(args: Array<String>) {
     println("Kultstraße 3".standardizeStreetSuffix().standardizeLetters())
     println("Kultstraße".standardizeStreetSuffix().standardizeLetters())
-    println("straße 73".standardizeStreetSuffix().standardizeLetters())
+    println("Straße 10    12".standardizeStreetSuffix().standardizeLetters())
 //    println("Garten12Weg".standardizeLetters())
 //    println(StreetDivider().parse("Heideweg2a"))
 //    println(StreetDivider().parse("M1, Nr. 3"))
