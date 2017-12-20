@@ -49,6 +49,14 @@ fun String.endsWithDigit(): Boolean {
     return this.length > 0 && this.last().isDigit()
 }
 
+fun String.emptyToNull(): String? {
+    return if (this.isEmpty()) null else this
+}
+
+fun String.subString(from: Int, to: Int): String {
+    return if (this.length <= to) this else this.substring(from, to)
+}
+
 
 fun main(args: Array<String>) {
     println("Kultstraße 3".standardizeStreetSuffix().standardizeLetters())
