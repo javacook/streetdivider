@@ -1,6 +1,7 @@
 package de.kotlincook.textmining.streetdivider
 
 import java.text.ParseException
+import kotlin.math.absoluteValue
 
 data class Location(val street: String,
                     val houseNumber: Int? = null,
@@ -35,31 +36,31 @@ open class StreetDivider(private val dictionary: Dictionary) {
             val houseNoWithAffix = input.substring(street1.length)
             if (!street1.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
                 try {
-                    val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
+                    val (houseNumber, houseNoAffix) = divideIntoHouseNoAndAffix(houseNoWithAffix)
                     return Location(
                             street1.removeTrailingSpecialChars(),
                             houseNumber, houseNoAffix?.emptyToNull())
                 } catch (e: ParseException) {
+                    // happens in the case M4a where M4 is a special street:
                     return Location(inputTrimmed)
                 }
             }
         }
         val (street2, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(inputTrimmed)
-        if (houseNoWithAffix == null) {
-            return Location(inputTrimmed)
-        }
-        if (street2 == "") {
-            return Location(inputTrimmed)
+        if (street2 == "" || houseNoWithAffix == null) {
+            return Location(inputTrimmed.removeTrailingSpecialChars())
         }
         try {
-            val (houseNumber, houseNoAffix) = divideHouseNoAndAffix(houseNoWithAffix)
+            val (houseNumber, houseNoAffix) = divideIntoHouseNoAndAffix(houseNoWithAffix)
             return Location(street2.removeTrailingSpecialChars(), houseNumber, houseNoAffix?.emptyToNull())
         } catch (e: ParseException) {
+            // to be safety - this case can actually not happen as long as
+            // divideIntoStreetAndHouseNoWihAffixDueToNumber works correct
             return Location(inputTrimmed)
         }
     }
 
-    open protected fun divideHouseNoAndAffix(str: String): Pair<String?, String?> {
+    open fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
         // Example: "Nr. 25 - 27 b"
         if (str == "") return Pair(null, null)
         val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
@@ -93,7 +94,22 @@ open class StreetDivider(private val dictionary: Dictionary) {
 
 fun main(args: Array<String>) {
     val streetDivider = StreetDivider()
-    println(streetDivider.parse("M45"))
+//    streetDivider.divideIntoHouseNoAndAffix("Hallo")
+
+
+    for (cnt in 0..10000){
+        for (len in 0..100) {
+            var input = ""
+            for (i in 0 until len) {
+                val zahl: Int = (Math.random() * 65536).toInt()
+                input += (zahl.absoluteValue % 65536).toChar();
+            }
+            // println(streetDivider.parse(input))
+        }
+    }
+
+
+//    println(streetDivider.parse("M45"))
 //    println(streetDivider.parse("X45"))
 }
 
