@@ -7,6 +7,9 @@ fun String.removeTrailingSpecialChars():String {
             result = result.removeSuffix(ch.toString())
         }
     }
+    while (result.endsWith("..")) {
+        result = result.substring(0, result.lastIndex)
+    }
     return result
 }
 
