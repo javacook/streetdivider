@@ -8,7 +8,7 @@ class StreetDividerTest {
     
     val streetDivider = StreetDivider(
             "Bundesstraße1", "Bundesstrasse 2", "Strasse73" ,"1 Maja",
-            "b4", "d4", "Straße des 18. Oktober")
+            "b4", "d4", "Straße des 18. Oktober", "Straße 10", "Straße 101")
 
     @Test
     fun testNummernstrasseMitBruchzahl() {
@@ -238,6 +238,20 @@ class StreetDividerTest {
     fun testNummerstrMitKomma() {
         val actual = streetDivider.parse("374, 4")
         val expected = Location("374", 4)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testNummerStrasseSpezialfall101_2() {
+        val actual = streetDivider.parse("Straße 101 2")
+        val expected = Location("Straße 101", 2)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testNummerStrasseSpezialfall10_12() {
+        val actual = streetDivider.parse("Straße 10 12")
+        val expected = Location("Straße 10", 12)
         assertEquals(expected, actual)
     }
 
