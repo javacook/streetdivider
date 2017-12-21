@@ -86,8 +86,6 @@ fun String.encodeSpecialChars(): String {
 }
 
 
-
-
 fun String.charAt(pos: Int): Char? {
     return if (pos < 0 || pos > this.lastIndex) null else this[pos]
 }
@@ -102,8 +100,16 @@ fun String.standardizeStreetSuffix(): String {
     }
 }
 
+fun String.standardizeStreetInfix(): String {
+    return this.replace(Regex("""(straße)([^a-zA-Z])"""), "str.$2")
+               .replace(Regex("""straße$"""), "str.")
+               .replace(Regex("""(Straße)([^a-zA-Z])"""), "Str.$2")
+               .replace(Regex("""Straße$"""), "Str.")
+}
+
+
 fun String.standardizeStreetName(): String {
-    return this.standardizeStreetSuffix().standardizeLetters().encodeSpecialChars();
+    return this.standardizeStreetInfix().standardizeLetters().encodeSpecialChars();
 }
 
 fun String.startsWithDigit(): Boolean {
@@ -126,7 +132,11 @@ fun String.subString(from: Int, to: Int): String {
 fun main(args: Array<String>) {
     println("Kultstraße-3".standardizeLetters())
     println("_Ku.lt-45,.._str23 34aße".standardizeStreetName())
-
+    println("Gartenstraße23".standardizeStreetInfix())
+    println("Gartenstraße".standardizeStreetInfix())
+    println("Straßenbahnstr. 23".standardizeStreetInfix())
+    println("Straße12".standardizeStreetInfix())
+    println("Straße 12".standardizeStreetInfix())
 //    println("Kultstraße".standardizeStreetSuffix().standardizeLetters())
 //    println("Straße 10    12".standardizeStreetSuffix().standardizeLetters())
 //println("println("Garten12Weg".standardizeLetters())
