@@ -7,8 +7,8 @@ import org.junit.Assert.assertEquals
 class StreetDividerTest {
     
     val streetDivider = StreetDivider(
-            "Bundesstraße1", "Bundesstrasse 2", "Strasse73" ,"1 Maja",
-            "b4", "d4", "Straße des 18. Oktober", "Straße 10", "Straße 101")
+            "Bundesstraße1", "Bundesstr. 2", "Straße73" ,"1 Maja",
+            "b4", "d4", "Straße des 18. Oktober", "Straße 10", "Str 101")
 
     @Test
     fun testNummernstrasseMitBruchzahl() {
@@ -252,6 +252,20 @@ class StreetDividerTest {
     fun testNummerStrasseSpezialfall10_12() {
         val actual = streetDivider.parse("Straße 10 12")
         val expected = Location("Straße 10", 12)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testStraßennormierung() {
+        val actual = streetDivider.parse("Str. 10 12")
+        val expected = Location("Str. 10", 12)
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testStraßennormierungStraßenbahn() {
+        val actual = streetDivider.parse("Straßenbahnweg 12")
+        val expected = Location("Straßenbahnweg", 12)
         assertEquals(expected, actual)
     }
 
