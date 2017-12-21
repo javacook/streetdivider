@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.scene.text.FontWeight
 import tornadofx.*
 
+// A GUI to test the StreetDivider quickly
+
 class Styles : Stylesheet() {
     init {
         label {

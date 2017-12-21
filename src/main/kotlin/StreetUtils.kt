@@ -16,7 +16,6 @@ fun String.removeTrailingSpecialChars():String {
 }
 
 
-
 fun String.standardizeLetters(): String {
     var result = ""
     for (pos in 0..this.lastIndex) {
@@ -100,6 +99,7 @@ fun String.standardizeStreetSuffix(): String {
     }
 }
 
+
 fun String.standardizeStreetInfix(): String {
     return this.replace(Regex("""(straße)([^a-zA-Z])"""), "str.$2")
                .replace(Regex("""straße$"""), "str.")
@@ -109,7 +109,9 @@ fun String.standardizeStreetInfix(): String {
 
 
 fun String.standardizeStreetName(): String {
-    return this.standardizeStreetInfix().standardizeLetters().encodeSpecialChars();
+    return this.standardizeStreetInfix() // it is important to do this first
+            .standardizeLetters()        // because here are ß's replaced with ss
+            .encodeSpecialChars();
 }
 
 fun String.startsWithDigit(): Boolean {

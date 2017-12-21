@@ -1,8 +1,13 @@
 package de.kotlincook.textmining.streetdivider
 
 import java.text.ParseException
-import kotlin.math.absoluteValue
 
+// https://www.strassenkatalog.de/str/
+// http://www.strassen-in-deutschland.de/
+
+/**
+ * The result of the "street division"
+ */
 data class Location(val street: String,
                     val houseNumber: Int? = null,
                     val houseNoAffix: String? = null) {
@@ -13,8 +18,12 @@ data class Location(val street: String,
 
 
 /**
- * https://www.strassenkatalog.de/str/
- * http://www.strassen-in-deutschland.de/
+ * The main class with the central function <code>parse</code>
+ * A list of special streets can be given as argument. Some streets contain
+ * a number as suffix or infix so that it would be impossible to decide whether
+ * it is a house number or a part of the street name itselfs. Example "Straße 101".
+ * To make this decision unambiguous the street "Straße 101" can added to the list
+ * <code>streets</code>
  */
 open class StreetDivider(private val dictionary: Dictionary) {
     constructor(streets: List<String>) : this(Dictionary(streets.map {
@@ -60,7 +69,7 @@ open class StreetDivider(private val dictionary: Dictionary) {
         }
     }
 
-    open fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
+    open protected fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
         // Example: "Nr. 25 - 27 b"
         if (str == "") return Pair(null, null)
         val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
@@ -94,9 +103,10 @@ open class StreetDivider(private val dictionary: Dictionary) {
 
 fun main(args: Array<String>) {
     val streetDivider = StreetDivider()
-//    streetDivider.divideIntoHouseNoAndAffix("Hallo")
-//
-//    for (cnt in 0..10000){
+
+    val startTime = System.currentTimeMillis()
+
+//    for (cnt in 0..1000){
 //        for (len in 0..100) {
 //            var input = ""
 //            for (i in 0 until len) {
@@ -106,9 +116,11 @@ fun main(args: Array<String>) {
 //            // println(streetDivider.parse(input))
 //        }
 //    }
+//    val endTime = System.currentTimeMillis()
+//    println("Zeit: " + (endTime - startTime))
 
 
-    println(streetDivider.parse("Straße 10 12"))
+    println(streetDivider.parse("Str. 10 12"))
 //    println(streetDivider.parse("X45"))
 }
 
