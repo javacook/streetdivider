@@ -43,6 +43,8 @@ open class StreetDivider(private val dictionary: Dictionary) {
 
         if (street1.isNotEmpty()) {
             val houseNoWithAffix = input.substring(street1.length)
+            // The following "if" avoids that B54 is devided into B5 and house no 4
+            // if B5 is a special street:
             if (!street1.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
                 try {
                     val (houseNumber, houseNoAffix) = divideIntoHouseNoAndAffix(houseNoWithAffix)
@@ -50,7 +52,8 @@ open class StreetDivider(private val dictionary: Dictionary) {
                             street1.removeTrailingSpecialChars(),
                             houseNumber, houseNoAffix?.emptyToNull())
                 } catch (e: ParseException) {
-                    // happens in the case M4a where M4 is a special street:
+                    // happens in the case M4a where M4 is a special street
+                    // => Fallback that takes the complete input as street
                     return Location(inputTrimmed)
                 }
             }
@@ -66,17 +69,6 @@ open class StreetDivider(private val dictionary: Dictionary) {
             // to be safety - this case can actually not happen as long as
             // divideIntoStreetAndHouseNoWihAffixDueToNumber works correct
             return Location(inputTrimmed)
-        }
-    }
-
-    open protected fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
-        // Example: "Nr. 25 - 27 b"
-        if (str == "") return Pair(null, null)
-        val regexStrassenNummer = Regex("""(Nr\.)? *(\d+)(.*)$""")
-        val matchStrassenNr = regexStrassenNummer.find(str)
-        if (matchStrassenNr == null) throw ParseException(str, -1)
-        return with(matchStrassenNr) {
-            Pair(groupValues[2], groupValues[3].trim())
         }
     }
 
@@ -99,14 +91,33 @@ open class StreetDivider(private val dictionary: Dictionary) {
         return Pair(input, null)
     }
 
+    /**
+     * This method expects that <code>str</code> starts with "Nr." or a number
+     * and splits <code>str</code> into the number part in the front and and the rest
+     * @param str house no and affix to be divided
+     */
+    @Throws(ParseException::class)
+    open protected fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
+        // Example: "Nr. 25 - 27 b"
+        if (str == "") return Pair(null, null)
+        val regexStrassenNummer = Regex("""^(Nr\.?)? *(\d+)(.*)$""")
+        val matchStrassenNr = regexStrassenNummer.find(str)
+        if (matchStrassenNr == null) throw ParseException(str, -1)
+        return with(matchStrassenNr) {
+            Pair(groupValues[2], groupValues[3].trim())
+        }
+    }
+
 }
 
 fun main(args: Array<String>) {
     val streetDivider = StreetDivider()
+//    val regexStrassenNummer = Regex("""^(Nr\.)? *(\d+)(.*)$""")
+//    println(regexStrassenNummer.find("Nr. 3")!!.groupValues)
 
-    val startTime = System.currentTimeMillis()
-
-//    for (cnt in 0..1000){
+//    val startTime = System.currentTimeMillis()
+//
+//    for (cnt in 0..10000){
 //        for (len in 0..100) {
 //            var input = ""
 //            for (i in 0 until len) {
@@ -120,7 +131,7 @@ fun main(args: Array<String>) {
 //    println("Zeit: " + (endTime - startTime))
 
 
-    println(streetDivider.parse("Str. 10 12"))
+    println(streetDivider.parse("P111 2"))
 //    println(streetDivider.parse("X45"))
 }
 
