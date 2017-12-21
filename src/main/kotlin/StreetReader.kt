@@ -8,7 +8,20 @@ object StreetReader {
     init {
         val resource = this::class.java.classLoader.getResource("specialstreets.txt")
         val readText = resource.readText(Charset.defaultCharset())
-        streets = readText.split(Regex("""(\n|\r|\n\r)""")).map({it.trim()})
+        val lines = readText.split(Regex("""\r\n""")).map({it.trim()})
+        if (lines.size > 1) {
+            streets = lines
+        }
+        else {
+            val lines = readText.split(Regex("""\n""")).map({it.trim()})
+            if (lines.size > 1) {
+                streets = lines
+            }
+            else {
+                val lines = readText.split(Regex("""\r""")).map({it.trim()})
+                streets = lines
+            }
+        }
     }
 }
 
