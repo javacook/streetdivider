@@ -1,130 +1,1031 @@
-A1
-A2
-A3
-A5
-B1
-B2
-B4
-B5
-B6
-B7
-Bamberg 10
-Bamberg 11
-Bamberg 12
-Bamberg 13
-Bamberg 14
-Bamberg 15
-Bamberg 16
-Bamberg 17
-Bamberg 18
-Bamberg 19
-Bamberg 20
-Bamberg 7
-Bamberg 8
-Bamberg 9
-C1
-C2
-C3
-C4
-C7
-C8
-D1
-D2
-D3
-D4
-D5
-D6
-D7
-E1
-E3
-E4
-F1
-F2
-F3
-F4
-F5
-F6
-F7
-G1
-G2
-G3
-G4
-G6
-G7
-H1
-H2
-H5
-H7
-I. Koppelweg 1
-I. Koppelweg 2
-I1
-I3
-I6
-J7
-K1
-K2
-K3
-K4
-K5
-L1
-L10
-L11
-L12
-L13
-L14
-L15
-L2
-L4
-L5
-L6
-L7
-L8
-L9
-M1
-M2
-M3
-M4
-M5
-M6
-M7
-N1
-N2
-N3
-N4
-N5
-N6
-N7
-O1
-O3
-O4
-O5
-O6
-O7
-Osloer Straße 99
-P1
-P2
-P3
-P4
-P5
-P6
-P7
-Q1
-Q2
-Q3
-Q4
-Q5
-Q7
-R1
-R3
-R4
-R5
-R6
-R7
-S1
-S4
-S5
-S6
-Straße der Republik 26
+A 1
+A 2
+A 3
+A 4
+A 5
+A8/A81
+Abfindungen Weg 1
+Abfindungen Weg 2
+Abfindungen Weg 3
+Abfindungen Weg 4
+Abfindungen Weg 5
+Abschnitt 3
+Abschnitt 4
+Abschnitt 5
+Abschnitt 6
+Abschnitt 7
+Abschnitt 8
+Alte B 311
+Alte B 39
+Alte B 40
+Alte B 9
+Altes Lager PO 5
+Am 52'er Weg
+Am 87er Denkmal
+Am Campingplatz 1
+Am Campingplatz 2
+Am Galgenberg Dorf 1
+Am Galgenberg Dorf 11
+Am Galgenberg Dorf 2
+Am Goldberg 1
+Am Hammelberg Weg 1
+Am Hammelberg Weg 2
+Am Stellwerk 552
+Am Stich Maaß 1
+Am Stich Maaß 3
+An 44
+An den 12 Bäumen
+An den 13 Morgen
+An den 18 Morgen
+An den 24 Hallen
+An den 3 Kreuzen
+An den 30 Morgen
+An den 6 Bäumchen
+An den 6 Steinen
+An der A 2
+An der A 2 Nord
+An der A 2 Süd
+An der A 24
+An der A 9
+An der A 9 Ost
+An der A 9 West
+An der Alten B 40
+An der alten B 5
+An der Alten F 99
+An der Autobahn A 13 Ost
+An der Autobahn A 13 West
+An der Autobahn A 15
+An der B 1
+An der B 10
+An der B 100
+An der B 101
+An der B 102
+An der B 103
+An der B 104
+An der B 105
+An der B 106
+An der B 107
+An der B 110
+An der B 111
+An der B 112
+An der B 115
+An der B 14
+An der B 156
+An der B 158
+An der B 16
+An der B 167
+An der B 169
+An der B 173
+An der B 176
+An der B 179
+An der B 180
+An der B 182
+An der B 184
+An der B 185
+An der B 187
+An der B 187a
+An der B 188
+An der B 19
+An der B 193
+An der B 194
+An der B 195
+An der B 196
+An der B 197
+An der B 198
+An der B 2
+An der B 200
+An der B 206
+An der B 207
+An der B 213
+An der B 214
+An der B 216
+An der B 22
+An der B 245
+An der B 246
+An der B 247
+An der B 25
+An der B 255
+An der B 257
+An der B 26
+An der B 265
+An der B 27/ B 292
+An der B 277
+An der B 281
+An der B 285
+An der B 290
+An der B 292
+An der B 3
+An der B 303
+An der B 31
+An der B 320
+An der B 33
+An der B 35
+An der B 36
+An der B 36 / B39
+An der B 4
+An der B 404
+An der B 41
+An der B 410
+An der B 414
+An der B 416
+An der B 420
+An der B 421
+An der B 430
+An der B 432
+An der B 433
+An der B 436
+An der B 45
+An der B 466
+An der B 47
+An der B 470
+An der B 471
+An der B 5
+An der B 50
+An der B 53
+An der B 54
+An der B 6
+An der B 62
+An der B 64
+An der B 68
+An der B 7
+An der B 71
+An der B 73
+An der B 74
+An der B 75
+An der B 76
+An der B 8
+An der B 80
+An der B 84
+An der B 85
+An der B 87
+An der B 88
+An der B 89
+An der B 9
+An der B 91
+An der B 91 AS BAB 38
+An der B 93
+An der B 96
+An der B 96 Neddemin
+An der B 97
+An der B 99
+An der B1
+An der B310
+An der B36
+An der B462
+An der B5
+An der B6
+An der B92
+An der BAB 117 Waldeck Ost
+An der BAB 117 Waldeck West
+An der BAB 12
+An der BAB 14
+An der BAB 9 Ostseite
+An der BAB 9 Westseite
+An der BAB A2 Süd
+An der Bundesstr. 19
+An der Bundesstr. 27
+An der Bundesstraße 1
+An der Bundesstraße 10
+An der Bundesstraße 256
+An der Bundesstraße 291
+An der Bundesstraße 304
+An der Bundesstraße 436
+An der Bundesstraße 5
+An der E 42
+An der E 47
+An der E 47 Landseite
+An der E 47 Seeseite
+An der Halle 400
+An der K 100
+An der K 15
+An der K 18
+An der K 2000
+An der K 2073
+An der K 25
+An der K 30
+An der K 39
+An der K 45
+An der K 56
+An der K 5753
+An der K 95
+An der K29
+An der K62
+An der Kreisstraße K36
+An der L 108
+An der L 134
+An der L 142
+An der L 184
+An der L 24
+An der L 27
+An der L 3012
+An der L 304
+An der L 3046
+An der L 318
+An der L 3482
+An der L 417
+An der L 437
+An der L 484
+An der L 540
+An der L 640
+An der L113
+An der Landstraße 159
+An der Landstraße L160
+An der Lechstaustufe 23
+An der Staatsstrasse 2190
+Auf den 50 Morgen
+Auf den Kämpen Dorf 10
+Auf den Kämpen Dorf 12
+Auf den Kämpen Dorf 13
+Auf den Kämpen Dorf 3
+Auf den Kämpen Dorf 4
+Auf den Kämpen Dorf 5
+Auf den Kämpen Dorf 6
+Auf den Kämpen Dorf 7
+Auf den Kämpen Dorf 8
+Auf den Kämpen Dorf 9
+Auf der Sandkaul 1
+Ausbau 1
+Ausbau 2
+Ausbau 4
+Ausbau 5
+Ausbau an der F 198
+Ausbau Höhe 304
+Außenliegend 1
+Außenliegend 11
+Außenliegend 14
+Außenliegend 19
+Außenliegend 1a
+Außenliegend 1b
+Außenliegend 2
+Außenliegend 25
+Außenliegend 34
+Außenliegend 4
+Außenliegend 9
+Außerhalb - Oberer Rosenstock 1
+Außerhalb 14
+Außerhalb 19
+Außerhalb 20
+Außerhalb 21
+Außerhalb 22
+Außerhalb 3
+Außerhalb 42
+Aussiedlerhof 1
+Aussiedlerhof 11
+Aussiedlerhof 2
+Aussiedlerhof 3
+Aussiedlung B9
+Autobahnzollamt 1
+Autobahnzollamt 2
+B 1
+B 10
+B 100
+B 101
+B 103
+B 107
+B 156
+B 172
+B 173
+B 175
+B 2
+B 200
+B 201
+B 214
+B 247
+B 273
+B 3
+B 39
+B 4
+B 40
+B 42
+B 432
+B 448
+B 49
+B 5
+B 6
+B 7
+B 81
+B 91
+B 96
+B 96 a
+B290
+B30
+B417
+B48
+B50
+BAB 21
+BAB 24
+BAB 8 Nordseite
+BAB A 14
+Bahnhaus 1
+Bahnhaus 115
+Bahnhaus 2
+Bahnhaus 3
+Bahnhaus 4
+Bahnhaus 40
+Bahnhaus an der B 26
+Bahnhaus Posten 11
+Bahnposten 252
+Bahnposten 253
+Bahnposten 54
+Bahnwärterhaus 1
+Bahnwärterhaus 2
+Bahnwärterhaus 25
+Bahnwärterhaus 3
+Bahnwärterhaus 39
+Bahnwärterhaus Posten 18
+Bahnwärterhaus Posten 20
+Bahnwarthaus 50
+Bei den 4 Ulmen
+Bentriteshof 1
+Bentriteshof 2
+Birkenweiler 1.Gartenweg
+Birkenweiler 2.Gartenweg
+Birkenweiler 3.Gartenweg
+Birkenweiler 4.Gartenweg
+Birkenweiler 5.Gartenweg
+Birkenweiler 6.Gartenweg
+Birkenweiler 7.Gartenweg
+Birkenweiler 8.Gartenweg
+Birkenweiler 9.Gartenweg
+Block 1
+Block 2
+Block 3
+Block 4
+Block 5
+Blockstelle 17
+Brückenmühle An der L 1124
+Bundesbahnposten 48
+Bundesstr. 1
+Bundesstr. 10
+Bundesstr. 101
+Bundesstr. 104
+Bundesstr. 11
+Bundesstr. 199
+Bundesstr. 202
+Bundesstr. 205
+Bundesstr. 212
+Bundesstr. 235
+Bundesstr. 243
+Bundesstr. 4
+Bundesstr. 404
+Bundesstr. 42
+Bundesstr. 43
+Bundesstr. 44
+Bundesstr. 455
+Bundesstr. 463
+Bundesstr. 49
+Bundesstr. 5
+Bundesstr. 70
+Bundesstr. 76
+Bundesstr. 87
+Bundesstr. 9
+Bundesstr. 96
+Bundesstraße 3
+Bungalowsiedlung 1
+Bungalowsiedlung 2
+Bungalowsiedlung 3
+Bungalowsiedlung 4
+Bungalowsiedlung 5
+Bungalowsiedlung 6
+Bungalowsiedlung K 3
+Bungalowsiedlung Weißenspring 3
+Businesspark A96
+C 1
+C 2
+C 3
+C 4
+C 5
+C 6
+C 7
+C 8
+Campingplatz 1
+Campingplatz D 170
+Campingplatz D 34
+D 1
+D 2
+D 3
+D 4
+D 5
+D 6
+D 7
+D2-Park
+Dargetzow 1. Wendung
+Dargetzow 2. Wendung
+Dargetzow 3. Wendung
+Demokratenbreite Weg 1
+Demokratenbreite Weg 2
+Demokratenbreite Weg 3
+Demokratenbreite Weg 4
+E 1
+E 2
+E 3
+E 4
+E 5
+E 6
+E 7
+Ebersrodaer Berge Flur 2
+F 1
+F 105
+F 2
+F 3
+F 4
+F 5
+F 6
+F 7
+F 96
+Feldweg 102
+Feldweg 24
+Feldweg 46
+Feldweg 63
+Feldweg 64
+Feldweg 65
+Feldweg 85
+Feuerweg 1
+Feuerweg 2
+Feuerweg 3
+Flughafen P6
+Flur 2
+Forsthaus 1 Falkensteig
+Forsthaus 2
+Forsthaus Kolbow 1
+Fußweg 475
+Fußweg 564
+G 1
+G 2
+G 3
+G 4
+G 5
+G 6
+G 7
+Gang 1
+Gang 144
+Gang 154
+Gang 2
+Gang 3/4
+Gang 5
+Gärtnerei an der B477
+Gewerbegebiet 1
+Gewerbegebiet 2
+Gewerbegebiet A 31
+Gewerbegebiet A61/L117
+Gewerbegebiet an der B 95
+Gewerbegebiet Auf Herrel 1
+Gewerbegebiet Auf Herrel 2
+Gewerbegebiet B255
+Gewerbegebiet B3
+Gewerbepark A 61/B 262
+Gewerbepark BAB 1
+Gewerbepark Neudahn 1
+Gewerbepark Neudahn 2
+Gewerbepark Neudahn 3
+H 1
+H 2
+H 3
+H 4
+H 5
+H 6
+H 7
+Hartward An der K 7
+Haus Bock an der K 51
+Hausboot 1
+Höhe 304
+Höllbergtunnel B 80/ A 38
+Home24-Str.
+I 1
+I 2
+I 3
+I 4
+I 5
+I 6
+I 7
+Im Jagen 61
+In den 14 Morgen
+In den 19 Morgen
+In den 30 Morgen
+Industriegebiet an der B 426
+Industriegebiet Hübitz B180/B242
+Industriepark BAB 1
+Industriestraße A 31 Ost
+Interessentenweg 2
+Jagen 17 - 20
+Jagen 23
+Jagen 25
+Jagen 33
+Jagen 37
+Jugendwaldheim 25 Eichen
+K 1
+K 2
+K 26
+K 3
+K 4
+K 4134
+K 5
+K 505
+K 54
+K 6
+K 7
+K 73 Efkebüll
+K903
+Kalmenhof 1
+KGA 1920
+KGA 750 Jahre Berlin
+KGA Biesenhorst 1
+KGA Blankenburg Anlage 1
+KGA Blankenburg Anlage 2
+KGA Blankenburg Anlage 3
+KGA Blankenburg Anlage 4
+KGA Blankenburg Anlage 5
+KGA Blankenburg Anlage 6
+KGA Blankenburg Anlage 7
+KGA Neuer Garten 1
+KGA Oberspree 66
+KGA Paradies 1
+KGA Paradies 2
+KGA Sternwarte 1911
+Kleine Steinwiese 1. Gartenweg
+Kleine Steinwiese 2. Gartenweg
+Kleine Steinwiese 3. Gartenweg
+Kleine Steinwiese 4. Gartenweg
+Kleine Steinwiese 5. Gartenweg
+KlGV 101
+KlGV 105
+KlGV 111 Pz
+KlGV 113
+KlGV 114
+KlGV 117
+KlGV 119
+KlGV 121
+KlGV 122
+KlGV 126
+KlGV 127
+KlGV 128
+KlGV 129
+KlGV 130
+KlGV 131
+KlGV 132
+KlGV 133 Pz
+KlGV 134
+KlGV 136
+KlGV 137
+KlGV 138
+KlGV 140
+KlGV 141
+KlGV 142
+KlGV 143
+KlGV 144
+KlGV 145
+KlGV 146
+KlGV 148
+KlGV 149
+KlGV 150 Pz
+KlGV 152
+KlGV 153
+KlGV 154
+KlGV 155
+KlGV 156
+KlGV 159
+KlGV 160
+KlGV 161
+KlGV 202 Pz
+KlGV 204
+KlGV 206 Pz
+KlGV 210
+KlGV 211
+KlGV 212
+KlGV 213
+KlGV 214
+KlGV 215
+KlGV 216 Pz
+KlGV 217
+KlGV 218
+KlGV 220
+KlGV 222 Pz
+KlGV 223
+KlGV 227
+KlGV 228
+KlGV 229
+KlGV 230
+KlGV 231
+KlGV 232
+KlGV 233
+KlGV 234
+KlGV 235
+KlGV 236
+KlGV 237
+KlGV 238 Pz
+KlGV 239
+KlGV 240
+KlGV 301
+KlGV 302
+KlGV 303
+KlGV 304
+KlGV 306
+KlGV 307
+KlGV 308
+KlGV 309
+KlGV 310
+KlGV 311
+KlGV 312
+KlGV 313 Pz
+KlGV 314
+KlGV 315
+KlGV 316
+KlGV 318
+KlGV 319
+KlGV 320
+KlGV 322
+KlGV 323
+KlGV 325
+KlGV 327
+KlGV 328
+KlGV 329
+KlGV 331
+KlGV 335
+KlGV 336
+KlGV 337
+KlGV 338
+KlGV 339
+KlGV 340
+KlGV 343
+KlGV 344
+KlGV 345
+KlGV 346
+KlGV 347
+KlGV 349
+KlGV 350
+KlGV 351
+KlGV 352
+KlGV 353
+KlGV 354
+KlGV 355
+KlGV 356
+KlGV 357
+KlGV 358
+KlGV 359
+KlGV 401
+KlGV 402
+KlGV 404 Pz
+KlGV 405
+KlGV 406
+KlGV 409
+KlGV 410
+KlGV 411
+KlGV 412
+KlGV 413
+KlGV 414
+KlGV 415
+KlGV 416
+KlGV 417
+KlGV 418
+KlGV 419 Pz
+KlGV 420
+KlGV 421 Pz
+KlGV 422
+KlGV 423
+KlGV 424
+KlGV 426
+KlGV 427
+KlGV 428
+KlGV 429
+KlGV 430
+KlGV 432
+KlGV 433
+KlGV 434
+KlGV 435
+KlGV 436
+KlGV 437
+KlGV 448
+KlGV 449
+KlGV 450
+KlGV 451
+KlGV 452
+KlGV 453
+KlGV 454
+KlGV 455
+KlGV 456
+KlGV 457
+KlGV 458
+KlGV 459
+KlGV 460
+KlGV 461
+KlGV 462
+KlGV 501
+KlGV 502
+KlGV 504
+KlGV 508
+KlGV 511
+KlGV 512
+KlGV 513
+KlGV 515
+KlGV 516 Pz
+KlGV 518
+KlGV 519
+KlGV 520
+KlGV 521
+KlGV 522
+KlGV 523
+KlGV 524
+KlGV 526
+KlGV 527
+KlGV 528
+KlGV 529
+KlGV 530
+KlGV 531
+KlGV 534
+KlGV 536
+KlGV 537
+KlGV 538
+KlGV 539
+KlGV 541
+KlGV 543
+KlGV 544
+KlGV 545
+KlGV 547
+KlGV 548
+KlGV 551
+KlGV 552
+KlGV 553
+KlGV 554
+KlGV 555
+KlGV 556
+KlGV 561
+KlGV 565
+KlGV 566
+KlGV 568
+KlGV 569
+KlGV 570
+KlGV 573
+KlGV 574
+KlGV 575
+KlGV 576
+KlGV 577
+KlGV 578
+KlGV 579
+KlGV 580
+KlGV 581
+KlGV 583
+KlGV 584
+KlGV 585
+KlGV 586
+KlGV 587
+KlGV 588
+KlGV 589
+KlGV 590
+KlGV 591
+KlGV 592
+KlGV 593
+KlGV 594
+KlGV 595
+KlGV 596
+KlGV 597
+KlGV 598
+KlGV 599
+KlGV 601
+KlGV 602 Pz
+KlGV 603
+KlGV 604
+KlGV 605
+KlGV 607
+KlGV 608
+KlGV 609
+KlGV 610
+KlGV 611
+KlGV 612
+KlGV 613
+KlGV 614
+KlGV 615
+KlGV 616
+KlGV 617
+KlGV 618
+KlGV 619
+KlGV 620
+KlGV 621
+KlGV 622
+KlGV 623
+KlGV 624
+KlGV 625
+KlGV 626
+KlGV 627
+KlGV 628
+KlGV 629
+KlGV 631
+KlGV 705
+KlGV 706
+KlGV 709
+KlGV 710
+KlGV 711
+KlGV 712
+KlGV 714
+KlGV 715
+KlGV 716
+KlGV 718
+KlGV 719
+KlGV 720
+KlGV 722
+KlGV 723
+KlGV 725
+KlGV 726
+KlGV 727
+KlGV 728
+KlGV 730
+KlGV 731
+KlGV 732
+KlGV 735
+KlGV 737
+KlGV 738
+KlGV 739
+KlGV 740
+KlGV 742
+KlGV 743
+KlGV 744
+KlGV 745
+KlGV 746
+KlGV 747
+KlGV 748
+KlGV 752
+KlGV 753
+KlGV 756
+KlGV 760
+KlGV 761
+KlGV 762
+KlGV 763
+KlGV 764
+KlGV 765
+KlGV 767
+KlGV 768
+KlGV 769
+KlGV 770
+KlGV 771
+KlGV 772
+KlGV 773
+KlGV 774
+KlGV 775
+Kol. Altonaer Straße 73
+Kol. An der Kappe 130
+Kol. Friedland 1
+Kol. Friedland 2
+Kol. Friedland 3
+Kol. Friedland 33
+Kol. Grunewald-Wilhelm Naulin- Im Jagen 84
+Kol. Heerstraße 200
+Kol. Lankwitz Stamm 3
+Kol. Paulsfelde 1
+Kol. Paulsfelde 2
+Kol. Südpark 1
+Kol. Südpark 2
+Kollerhof 1
+Kollerhof 2
+Kolonie 1
+Kolonie 2
+Kreisstr. 431
+Kreisstraße GZ 14
+Krummenort B 77
+Kugelfangberg 1
+Kugelfangberg 2
+L 1
+L 10
+L 11
+L 12
+L 13
+L 14
+L 145
+L 148
+L 15
+L 2
+L 3
+L 4
+L 5
+L 553
+L 6
+L 7
+L 8
+L 9
+L169
+Landesstr. 223a
+Landesstraße 120
+Landesstraße 161
+Landesstraße 316
+Landesstraße 546
+Landesstraße Nr. 2
+Landstraße L 170
+Lechstufe 12
+Lechstufe 13
+M 1
+M 2
+M 3
+M 3a
+M 4
+M 5
+M 6
+M 7
+Melstrup-Siedlung B 70
+Mühle 1 Waldmühle
+Mühle 2 Heckenmühle
+Mühle 3 Lukasmühle
+Mühle 4 Korbsmühle
+N 1
+N 2
+N 3
+N 4
+N 5
+N 6
+N 7
+Nach den 12 Morgen
+Nordportal 1
+Nr. 17
+NW 10 Str.
+NW 15 Str.
+O 1
+O 2
+O 3
+O 4
+O 5
+O 6
+O 7
+Ostbense an der L 5
+P 1
+P 111
+P 2
+P 3
+P 4
+P 5
+P 6
+P 7
+Pfaffensteig 7
+Plan 27
+Platz des 17. Juni
+Platz des 20. Juli 1944
+Platz des 21. September
+Platz des 3.Oktober
+Platz des 4. Juli
+Platz des 8.Mai 1945
+Platz des Volksaufstandes von 1953
+Posten 10
+Posten 113/Bahnhaus
+Posten 28
+Posten 4
+Posten 44
+Posten 46
+Posten 48
+Posten 55
+Posten 6
+Posten 62
+Posten 63
+Posten 65
+Posten 77
+Posten 90
+Posten Nr. 24
+Posten-19-Weg
+Privatstr. 1
+Privatstr. 10
+Privatstr. 12
+Privatstr. 13
+Privatstr. 14
+Privatstr. 2
+Privatstr. 3
+Privatstr. 4
+Privatstr. 5
+Privatstr. 6
+Privatstr. 7
+Privatstr. 8
+Privatstr. 9
+Q 1
+Q 2
+Q 3
+Q 4
+Q 5
+Q 6
+Q 7
+R 1
+R 2
+R 3
+R 4
+R 5
+R 6
+R 7
+Rasthaus A 3 Ffm.-Köln
+Rasthaus A 3 Köln-Ffm.
+Rasthaus B9
+Raststätte Hardtwald Ost An der A5
+Raststätte Medenbach Ost BAB 3
+Raststätte Medenbach West BAB 3
+Rochow 1
+S 1
+S 2
+S 3
+S 4
+S 5
+S 6
+Schacht 6
+Schneise 7
+Siedl. Siedlung 10
+Siedlung 1
+Siedlung 2
+Siedlung an der B 86
+Siedlung des 15. Oktober
+Spatzenhausen 33
+Staatsstr. 262
+Stich 1 Ausbau
 Straße 1
 Straße 10
 Straße 100
@@ -135,6 +1036,7 @@ Straße 109
 Straße 11
 Straße 113
 Straße 12
+Straße 120
 Straße 122
 Straße 123
 Straße 124
@@ -147,7 +1049,6 @@ Straße 132
 Straße 133
 Straße 134
 Straße 136
-Straße 13a
 Straße 14
 Straße 140
 Straße 141
@@ -161,6 +1062,8 @@ Straße 153
 Straße 155
 Straße 156
 Straße 158
+Straße 15a
+Straße 15b
 Straße 16
 Straße 160
 Straße 163
@@ -169,10 +1072,12 @@ Straße 165
 Straße 166
 Straße 167
 Straße 17
+Straße 170
 Straße 171
 Straße 175
 Straße 178
 Straße 179
+Straße 17a
 Straße 18
 Straße 180
 Straße 181
@@ -185,22 +1090,25 @@ Straße 187
 Straße 188
 Straße 189
 Straße 18a
+Straße 18s
 Straße 19
 Straße 199
+Straße 19a
+Straße 19b
 Straße 2
 Straße 20
-Straße 201
 Straße 206
 Straße 207
+Straße 20a
 Straße 21
 Straße 210
-Straße 214A
 Straße 22
 Straße 223
 Straße 224
 Straße 225
 Straße 228
 Straße 229
+Straße 23
 Straße 230
 Straße 231
 Straße 232
@@ -217,6 +1125,9 @@ Straße 265
 Straße 27
 Straße 270
 Straße 28
+Straße 29
+Straße 29a
+Straße 29b
 Straße 3
 Straße 30
 Straße 31
@@ -241,31 +1152,34 @@ Straße 4
 Straße 40
 Straße 41
 Straße 42
-Straße 427
 Straße 43
+Straße 432
 Straße 435
 Straße 44
 Straße 442
 Straße 45
 Straße 455
+Straße 456
 Straße 46
+Straße 468
 Straße 47
 Straße 478
 Straße 48
 Straße 482
+Straße 487
 Straße 49
-Straße 494
 Straße 5
 Straße 50
 Straße 51
 Straße 52
 Straße 52a
 Straße 52b
+Straße 53
 Straße 54
 Straße 545
 Straße 546
+Straße 54a
 Straße 55
-Straße 552
 Straße 56
 Straße 567
 Straße 573
@@ -279,6 +1193,7 @@ Straße 600
 Straße 603
 Straße 604
 Straße 606 a
+Straße 61
 Straße 614
 Straße 618
 Straße 62
@@ -295,36 +1210,221 @@ Straße 72
 Straße 73
 Straße 74
 Straße 76
+Straße 76a
 Straße 77
+Straße 77a
 Straße 78
 Straße 79
 Straße 8
+Straße 81
 Straße 86
 Straße 87
 Straße 89
 Straße 9
 Straße 90
-Straße 901
-Straße 902
 Straße 94
 Straße 96
 Straße 97
+Straße 99
+Straße an der F 180
+Straße der 13. Jäger
+Straße der 53
+Straße der B 105
+Straße der LPG 8. März
+Straße des 1. Kürassierregimentes
+Straße des 1. Mai
+Straße des 1.Juli
+Straße des 12. August
 Straße des 13. Januar
+Straße des 15. Oktober
 Straße des 17. Juni
+Straße des 18. März
 Straße des 18. Oktober
-Straße G 120
-Straße G 18
-Straße R 1
-T1
-T2
-T3
-T4
-T5
-T6
-U1
-U2
-U4
-U5
-U6
-Wesuweer Hauptstraße 2
-Zweite Ringstraße 3
+Straße des 20. Juli
+Straße des 25. Oktober
+Straße des 28. April 1945
+Straße des 3. Husarenregiments
+Straße des 3. Oktober
+Straße des 7. Oktober
+Straße des 8. Mai
+Straße des 8. März
+Straße E1
+Straße E2
+Straße E4
+Straße E5
+Straße E7
+Straße E9
+Straße Nr. 1
+Straße Nr. 10
+Straße Nr. 11
+Straße Nr. 12
+Straße Nr. 2
+Straße Nr. 3
+Straße Nr. 4
+Straße Nr. 5
+Straße Nr. 6
+Straße Nr. 8
+Straße Nr. 9
+T 1
+T 2
+T 3
+T 4
+T 5
+T 6
+Tank- und Rastanlage Harz BAB 7 - Ost
+Tank- und Rastanlage Harz BAB 7 - West
+Tankstelle an der B 252
+Tankstelle B 49
+Tankstelle Erbenheim Nord BAB 66
+Tankstelle Erbenheim Süd BAB 66
+U 1
+U 2
+U 3
+U 4
+U 5
+U 6
+Unter den 23. Äckern
+Unter den 30 Morgen
+Unterrotenstein 5
+Unterrotenstein 5/1
+Urlaubersiedlung C 34
+Verlängerte Straße 659
+Vettiner Mühle 1
+Waldhof an der B 6
+Waldparzelle 1
+Weg 06
+Weg 07
+Weg 08
+Weg 09
+Weg 1
+Weg 10
+Weg 11
+Weg 12
+Weg 13
+Weg 14
+Weg 15
+Weg 16
+Weg 17
+Weg 18
+Weg 19
+Weg 2
+Weg 20
+Weg 209
+Weg 21
+Weg 22
+Weg 23
+Weg 24
+Weg 25
+Weg 27
+Weg 3
+Weg 31
+Weg 32
+Weg 33
+Weg 4
+Weg 42
+Weg 43
+Weg 46
+Weg 47
+Weg 48
+Weg 49
+Weg 5
+Weg 50
+Weg 51
+Weg 6
+Weg 64
+Weg 66
+Weg 68
+Weg 69
+Weg 7
+Weg 70
+Weg 72
+Weg 78
+Weg 8
+Weg 85
+Weg 87
+Weg 89
+Weg 9
+Weg 90
+Weg 91
+Weg Nr. 1
+Weg Nr. 12
+Weg Nr. 173
+Weg Nr. 174
+Weg Nr. 1A
+Weg Nr. 2
+Weg Nr. 3
+Weg Nr. 396
+Weg Nr. 4
+Weg Nr. 410
+Weg Nr. 414
+Weg Nr. 5
+Weg Nr. 6
+Weg Nr. 651
+Weg Nr. 6A
+Wildenstein 1
+Wildenstein 2
+Wildenstein 6
+Wildenstein 8
+Wippershain 10. Str.
+Wippershain 101. Str.
+Wippershain 102. Str.
+Wippershain 11. Str.
+Wippershain 112. Str.
+Wippershain 113. Str.
+Wippershain 114. Str.
+Wippershain 115. Str.
+Wippershain 12. Str.
+Wippershain 13. Str.
+Wippershain 131. Str.
+Wippershain 132. Str.
+Wippershain 3. Str.
+Wippershain 6. Str.
+Wippershain 7. Str.
+Wippershain 71. Str.
+Wippershain 8. Str.
+Wippershain 9. Str.
+Wippershain 91. Str.
+Wochenendsiedlung Klixmühle 1
+Wochenendsiedlung Klixmühle 2
+Wochenendsiedlung Klixmühle 3
+Wochenendsiedlung Weißenspring 1
+Wochenendsiedlung Weißenspring 2
+Zeile 1
+Zeile 10
+Zeile 11
+Zeile 12
+Zeile 13
+Zeile 14
+Zeile 15
+Zeile 16
+Zeile 17
+Zeile 18
+Zeile 19
+Zeile 2
+Zeile 20
+Zeile 3
+Zeile 4
+Zeile 5
+Zeile 6
+Zeile 7
+Zeile 8
+Zeile 9
+Zeltplatz D 68
+Zeltplatz D 83
+Zeltplatz E 33
+Zeltplatz E 34
+Zeltplatz E 37
+Zeltplatz Stendenitz D 92
+Zeltplatz Tornow D 111
+Zeltplatz Tornow D 113
+Ziegelei Werk Abt. 3
+Ziegelei Werk Abt. 4
+Ziegelei Werk Abt. 5
+Zollhaus 1
+Zollhaus 2
+Zu den 5 Linden
+Zum 1. Fischerbuden
+Zum Schuppen 20
+Zum Schuppen 22
+Zum Schuppen 24
+Zum Träumen 1A
