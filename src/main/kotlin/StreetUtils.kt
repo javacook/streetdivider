@@ -1,6 +1,6 @@
 package de.kotlincook.textmining.streetdivider
 
-import java.text.CharacterIterator
+import de.kotlincook.textmining.streetdivider.Status.*
 
 fun String.removeTrailingSpecialChars():String {
     var result = this
@@ -16,23 +16,6 @@ fun String.removeTrailingSpecialChars():String {
 }
 
 
-fun String.standardizeLetters1(): String {
-    var result = ""
-    for (ch in this) {
-        if (ch.isLetterOrDigit()) {
-            val lowerCh = ch.toLowerCase()
-            result += when (lowerCh) {
-                'é','è','ê' -> "e"
-                'ä' -> "ae"
-                'ö' -> "oe"
-                'ü' -> "ue"
-                'ß' -> "ss"
-                else -> lowerCh.toString()
-            }
-        }
-    }
-    return result
-}
 
 fun String.standardizeLetters(): String {
     var result = ""
@@ -40,20 +23,70 @@ fun String.standardizeLetters(): String {
         val lowerCh = this[pos].toLowerCase()
         if (lowerCh.isLetterOrDigit()) {
             result += when (lowerCh) {
-                'é','è','ê' -> "e"
-                'ä' -> "ae"
+                'à', 'á', 'â', 'ã', 'å' -> "a"
+                'æ', 'ä' -> "ae"
+                'ç' -> "c"
+                'ë', 'ê', 'é', 'è' -> "e"
+                'Ì', 'Í', 'Î', 'Ï' -> "i"
+                'ñ' -> "n"
+                'ò', 'ó', 'ô', 'õ', 'ø' -> "o"
                 'ö' -> "oe"
+                'ù', 'ú', 'û' -> "u"
                 'ü' -> "ue"
-                'ß' -> "ss"
+                'þ'-> "p"
+                'ý' -> "y"
+                'ß', 'β' -> "ss"
                 else -> lowerCh.toString()
             }
-        }
-        else if (this.charAt(pos-1)?.isDigit()?:false && this.charAt(pos+1)?.isDigit()?:false) {
-            result += " "
+        } else {
+            result += this[pos]
         }
     }
     return result
 }
+
+
+enum class Status {
+    DEFAULT, DIGIT, DIGIT_SPECIAL
+}
+
+fun String.encodeSpecialChars(): String {
+    val CODE_FOR_SPECIAL = "_"
+    var result = ""
+    var status = DEFAULT
+    for (ch in this) {
+        val pair =
+        when (status) {
+            DEFAULT -> {
+                when {
+                    ch.isDigit() -> Pair(DIGIT, ch.toString())
+                    ch.isLetter() -> Pair(DEFAULT, ch.toString())
+                    else -> Pair(DEFAULT, "")
+                }
+            }
+            DIGIT -> {
+                when {
+                    ch.isDigit() -> Pair(DIGIT, ch.toString())
+                    ch.isLetter() -> Pair(DEFAULT, ch.toString())
+                    else -> Pair(DIGIT_SPECIAL, "")
+                }
+            }
+            DIGIT_SPECIAL -> {
+                when {
+                    ch.isDigit() -> Pair(DIGIT, CODE_FOR_SPECIAL + ch)
+                    ch.isLetter() -> Pair(DEFAULT, ch.toString())
+                    else -> Pair(DIGIT_SPECIAL, "")
+                }
+            }
+        }
+        status = pair.first
+        result += pair.second
+    }
+    return result
+}
+
+
+
 
 fun String.charAt(pos: Int): Char? {
     return if (pos < 0 || pos > this.lastIndex) null else this[pos]
@@ -70,7 +103,7 @@ fun String.standardizeStreetSuffix(): String {
 }
 
 fun String.standardizeStreetName(): String {
-    return this.standardizeStreetSuffix().standardizeLetters();
+    return this.standardizeStreetSuffix().standardizeLetters().encodeSpecialChars();
 }
 
 fun String.startsWithDigit(): Boolean {
@@ -91,11 +124,13 @@ fun String.subString(from: Int, to: Int): String {
 
 
 fun main(args: Array<String>) {
-    println("Kultstraße 3".standardizeStreetSuffix().standardizeLetters())
-    println("Kultstraße".standardizeStreetSuffix().standardizeLetters())
-    println("Straße 10    12".standardizeStreetSuffix().standardizeLetters())
-//    println("Garten12Weg".standardizeLetters())
-//    println(StreetDivider().parse("Heideweg2a"))
-//    println(StreetDivider().parse("M1, Nr. 3"))
-//    println(StreetDivider().parse("1. Wasserstro 3b"))
+    println("Kultstraße-3".standardizeLetters())
+    println("_Ku.lt-45,.._str23 34aße".standardizeStreetName())
+
+//    println("Kultstraße".standardizeStreetSuffix().standardizeLetters())
+//    println("Straße 10    12".standardizeStreetSuffix().standardizeLetters())
+//println("println("Garten12Weg".standardizeLetters())
+//println("println(StreetDivider().parse("Heideweg2a"))
+//println("println(StreetDivider().parse("M1, Nr. 3"))
+//println("println(StreetDivider().parse("1. Wasserstro 3b"))
 }
