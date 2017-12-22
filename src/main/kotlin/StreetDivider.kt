@@ -1,10 +1,6 @@
 package de.kotlincook.textmining.streetdivider
 
 import java.text.ParseException
-import kotlin.math.absoluteValue
-
-// https://www.strassenkatalog.de/str/
-// http://www.strassen-in-deutschland.de/
 
 /**
  * The result of the "street division"
@@ -33,6 +29,11 @@ open class StreetDivider(private val dictionary: Dictionary) {
     constructor(vararg streets:String) : this(streets.asList())
     constructor() : this(StreetReader.streets)
 
+    /**
+     * The main and soley public function of this class. It parses the
+     * input and tries to detect the street, house number (optional) and
+     * its affix (optional).
+     */
     open fun parse(input: String): Location {
         val inputTrimmed = input.trim()
         var street1 = inputTrimmed
@@ -43,7 +44,7 @@ open class StreetDivider(private val dictionary: Dictionary) {
         }
 
         if (street1.isNotEmpty()) {
-            val houseNoWithAffix = input.substring(street1.length)
+            val houseNoWithAffix = inputTrimmed.substring(street1.length)
             // The following "if" avoids that B54 is devided into B5 and house no 4
             // if B5 is a special street:
             if (!street1.endsWithDigit() || !houseNoWithAffix.startsWithDigit()) {
@@ -74,8 +75,11 @@ open class StreetDivider(private val dictionary: Dictionary) {
     }
 
     /**
-     * Searches for the first occurrence of a number in me (street, house no und houseNoAffix),
-     * except the input is starting with digits and divides <code>input</code> in front of the number
+     * Searches for the first occurrence of a number in me (street, house number
+     * und houseNoAffix), except the input is starting with digits. In the latter case
+     * it is assumed that the street name starts with a number so that the second
+     * appearance of a number will be looked for.
+     * @return a pair consisting of the street and the house number (possibly with affix)
      */
     open protected fun divideIntoStreetAndHouseNoWihAffixDueToNumber(input: String): Pair<String, String?> {
         // Skipping over a possibly existing number prefix:
@@ -94,8 +98,11 @@ open class StreetDivider(private val dictionary: Dictionary) {
 
     /**
      * This method expects that <code>str</code> starts with "Nr." or a number
-     * and splits <code>str</code> into the number part in the front and and the rest
+     * and splits <code>str</code> into the number part in the front and and the rest.
+     * If <code>str</code> starts with "Nr" oder "Nr." this prefix is omitted.
      * @param str house no and affix to be divided
+     * @return a pair consisting of the house number and its affix (optional)
+     * @throws ParseException if <code>str</code> is not of the form described above
      */
     @Throws(ParseException::class)
     open protected fun divideIntoHouseNoAndAffix(str: String): Pair<String?, String?> {
@@ -114,6 +121,6 @@ open class StreetDivider(private val dictionary: Dictionary) {
 
 fun main(args: Array<String>) {
     val streetDivider = StreetDivider()
-    println(streetDivider.parse("P111 2"))
+    println(streetDivider.parse(" Straße 10"))
 }
 
