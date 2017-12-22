@@ -4,6 +4,11 @@ import de.kotlincook.textmining.streetdivider.Dictionary.Matching.*
 import java.lang.Math.min
 import java.util.TreeSet
 
+/**
+ * A class to store and find words. The advantage in comparison with a
+ * HashSet is that it can find prefixes and enlargement of the stored
+ * words as well.
+ */
 class Dictionary {
 
     constructor(vararg words: String) {
@@ -37,7 +42,7 @@ class Dictionary {
 
     /**
      * @param prefix
-     * @return true, falls word ein Praefix eines der Woerter des Dictionarys ist.
+     * @return true, falls prefix ein Praefix eines der Woerter des Dictionarys ist.
      */
     fun isPrefix(prefix: String): Boolean {
         val ceiling = treeSet.ceiling(prefix)
