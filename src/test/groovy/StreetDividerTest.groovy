@@ -49,6 +49,7 @@ class StreetDividerTest extends Specification  {
         "Bundesstr. 2 Nr.0"        | "Bundesstr. 2"         | 0       | null
         "Bundesstr. 2 Nr.O"        | "Bundesstr. 2 Nr.O"    | null    | null
         "Straße 73 5a"             | "Straße 73"            | 5       | "a"
+        " Straße 73"               | "Straße 73"            | null    | null
         "Stra ße 73 5a"            | "Stra ße"              | 73      | "5a"
         "Str. 73 5a"               | "Str. 73"              | 5       | "a"
         "Strasse73 5a"             | "Strasse"              | 73      | "5a"
