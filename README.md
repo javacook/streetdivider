@@ -26,4 +26,10 @@ In the examples above you can see the very strange street names of the
 city Manheim. The inner of the city in organized as a matrix with names
 like A4 or C3.
 
+Try it out
+----------
 
+You can download (downloads/streetdivider.jar) a small executable jar with UI and test
+the street decomposition with your own street names...
+
+![streetdivider.png](streetdivider.png)
