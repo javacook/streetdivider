@@ -18,10 +18,9 @@ input                | street           | house no | affix
 -------------------- | ---------------- | -------- | -------
 Gartenstr. 25a       | Gartenstr.       | 25       | a
 Brückenstr. 12a-13c  | Brückenstr.      | 12       | a-13c
-Straße 101 Nr. 12    | Straße 101       | 12       | null
+Straße 101 Nr. 12    | Straße 101       | 12       | 
 In den 30 Morgen 34b | In den 30 Morgen | 34       | b
-C 3 54               | C 3              | 54       | null
-
+C 3 54               | C 3              | 54       | 
 In the examples above you can see the very strange street names of the
 city Manheim. The inner of the city in organized as a matrix with names
 like A4 or C3.
