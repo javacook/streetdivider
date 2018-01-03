@@ -20,6 +20,7 @@ class StreetDividerTest extends Specification  {
     def "division of compound street names into their parts works correct"() {
         expect:
         streetDivider.parse(input) == new Location(street, houseNo, affix)
+        streetDivider.parse(" " + input + " ") == new Location(street, houseNo, affix)
 
         where:
         input                      | street                 | houseNo | affix
@@ -28,12 +29,14 @@ class StreetDividerTest extends Specification  {
         "A"                        | "A"                    | null    | null
         "5"                        | "5"                    | null    | null
         "143"                      | "143"                  | null    | null
+        "5001 44"                  | "5001"                 | 44      | null
         "374, 4"                   | "374"                  | 4       | null
         "B 4 10–10a"               | "B 4"                  | 10      | "–10a"
         "B45"                      | "B"                    | 45      | null
         "B4 5"                     | "B4"                   | 5       | null
         "D4"                       | "D4"                   | null    | null
         "D 4"                      | "D 4"                  | null    | null
+        "D 4 3"                    | "D 4"                  | 3       | null
         "D 4, 3"                   | "D 4"                  | 3       | null
         "D4, 3"                    | "D4"                   | 3       | null
         "D4, Nr. 3"                | "D4"                   | 3       | null
@@ -49,7 +52,7 @@ class StreetDividerTest extends Specification  {
         "Bundesstr. 2 Nr.0"        | "Bundesstr. 2"         | 0       | null
         "Bundesstr. 2 Nr.O"        | "Bundesstr. 2 Nr.O"    | null    | null
         "Straße 73 5a"             | "Straße 73"            | 5       | "a"
-        " Straße 73"               | "Straße 73"            | null    | null
+        "Straße 73"                | "Straße 73"            | null    | null
         "Stra ße 73 5a"            | "Stra ße"              | 73      | "5a"
         "Str. 73 5a"               | "Str. 73"              | 5       | "a"
         "Strasse73 5a"             | "Strasse"              | 73      | "5a"
@@ -99,6 +102,7 @@ class StreetDividerTest extends Specification  {
         "Dünè 5"                   | "Dünè 5"               | null    | null
         "Duené5"                   | "Duené5"               | null    | null
         "Dunê5"                    | "Dunê"                 | 5       | null
+        "Åbjerg 17423 ZZ"          | "Åbjerg"               | 17423   | "ZZ"
     }
 
 }
