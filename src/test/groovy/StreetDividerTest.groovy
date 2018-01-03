@@ -34,10 +34,20 @@ class StreetDividerTest extends Specification  {
         "B 4 10–10a"               | "B 4"                  | 10      | "–10a"
         "B45"                      | "B"                    | 45      | null
         "B4 5"                     | "B4"                   | 5       | null
-        "D4"                       | "D4"                   | null    | null
         "D 4"                      | "D 4"                  | null    | null
         "D 4 3"                    | "D 4"                  | 3       | null
+        "D 4 3 8"                  | "D 4"                  | 3       | "8"
+        "D 4 3b"                   | "D 4"                  | 3       | "b"
+        "D 4 3 8b"                 | "D 4"                  | 3       | "8b"
         "D 4, 3"                   | "D 4"                  | 3       | null
+        "D4"                       | "D4"                   | null    | null
+        "D4 31"                    | "D4"                   | 31      | null
+        "D43 1"                    | "D"                    | 43      | "1"
+        "D431"                     | "D"                    | 431     | null
+        "D,431"                    | "D"                    | 431     | null
+        "D+431"                    | "D"                    | 431     | null
+        "D-431"                    | "D"                    | 431     | null
+        "D.431"                    | "D."                   | 431     | null
         "D4, 3"                    | "D4"                   | 3       | null
         "D4, Nr. 3"                | "D4"                   | 3       | null
         "D4, Nr.3"                 | "D4"                   | 3       | null
