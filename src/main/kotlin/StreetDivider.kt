@@ -38,12 +38,14 @@ open class StreetDivider(private val dictionary: Dictionary) {
         val inputTrimmed = input.trim()
         var street1 = inputTrimmed
 
+        // Search for the longest prefix of inputTrimmed which is a special street name
         for (ch in inputTrimmed.reversed()) {
             if (dictionary.contains(street1.standardizeStreetName())) break
             street1 = street1.removeSuffix(ch.toString())
         }
 
         if (street1.isNotEmpty()) {
+            // inputTrimmed starts with a special street...
             val houseNoWithAffix = inputTrimmed.substring(street1.length)
             // The following "if" avoids that B54 is devided into B5 and house no 4
             // if B5 is a special street:
@@ -60,6 +62,7 @@ open class StreetDivider(private val dictionary: Dictionary) {
                 }
             }
         }
+        // inputTrimmed does not start with a special street name or is of the "B54 case" (see above)
         val (street2, houseNoWithAffix) = divideIntoStreetAndHouseNoWihAffixDueToNumber(inputTrimmed)
         if (street2 == "" || houseNoWithAffix == null) {
             return Location(inputTrimmed.removeTrailingSpecialChars())
