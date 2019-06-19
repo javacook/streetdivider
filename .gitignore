@@ -27,3 +27,7 @@ target/
 # IDE specific
 .idea
 *.iml
+
+# gradle
+build/
+.gradle/

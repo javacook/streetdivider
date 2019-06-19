@@ -6,18 +6,35 @@ buildscript {
 
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.openjfx:javafx-plugin:0.0.7"
     }
 }
 
+apply plugin: 'org.openjfx.javafxplugin'
 apply plugin: 'kotlin'
 apply plugin: 'groovy'
+apply plugin: 'signing'
 
 repositories {
     mavenCentral()
     jcenter()
+}
+
+
+javafx {
+    // will pull in transitive modules
+    modules("javafx.controls", "javafx.fxml") // replace with what you modules need
+
+    // another option is to use:
+    // modules = listOf("javafx.controls", "javafx.fxml")
+
+    version = "12.0.1" // or whatever version you're using
 }
 
 dependencies {
@@ -39,9 +56,36 @@ task('jaronly', type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+
+
+signing {
+    useGpgCmd()
+    sign jar
+    sign sourcesJar
+    sign javadocJar
+}
+
