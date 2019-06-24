@@ -1,25 +1,21 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+}
+
 group 'de.kotlincook.textmining'
 version '1.7-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.3.40'
 
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.openjfx:javafx-plugin:0.0.7"
-    }
-}
 
 apply plugin: 'org.openjfx.javafxplugin'
 apply plugin: 'kotlin'
 apply plugin: 'groovy'
-apply plugin: 'signing'
+
+//apply plugin: 'signing'
+
+
 
 repositories {
     mavenCentral()
@@ -28,20 +24,17 @@ repositories {
 
 
 javafx {
-    // will pull in transitive modules
-    modules("javafx.controls", "javafx.fxml") // replace with what you modules need
-
-    // another option is to use:
-    // modules = listOf("javafx.controls", "javafx.fxml")
-
-    version = "12.0.1" // or whatever version you're using
+    version = "11"
+    modules = [ 'javafx.controls' ]
 }
+
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile 'no.tornado:tornadofx:1.7.14'
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     compile "org.codehaus.groovy:groovy-all:2.4.10"
+    compile "org.openjfx:javafx-controls:11"
+    compile 'no.tornado:tornadofx:1.7.19'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
 }
 
@@ -82,10 +75,10 @@ artifacts {
 
 
 
-signing {
-    useGpgCmd()
-    sign jar
-    sign sourcesJar
-    sign javadocJar
-}
+//signing {
+//    useGpgCmd()
+//    sign jar
+//    sign sourcesJar
+//    sign javadocJar
+//}
 
