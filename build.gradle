@@ -36,7 +36,8 @@ javafx {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.codehaus.groovy:groovy-all:2.4.10"
-    compile "org.openjfx:javafx-controls:11"
+    compile "org.openjfx:ja" +
+            "vafx-controls:11"
     compile 'no.tornado:tornadofx:1.7.19'
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
