@@ -5,7 +5,7 @@
 
     <groupId>de.kotlincook.textmining</groupId>
     <artifactId>streetdivider</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.7</version>
     <name>Street Divider</name>
     <url>https://github.com/javacook/streetdivider</url>
     <description>This library is able to divide (German) a concatenated street names
@@ -156,7 +156,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>3.0.8</version>
+            <version>2.4.10</version>
         </dependency>
 
         <dependency>
