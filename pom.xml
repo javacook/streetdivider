@@ -4,7 +4,7 @@
 
     <groupId>de.kotlincook.textmining</groupId>
     <artifactId>streetdivider</artifactId>
-    <version>1.11-SNAPSHOT</version>
+    <version>1.8</version>
     <name>Street Divider</name>
     <url>https://github.com/javacook/streetdivider</url>
     <description>This library is able to divide (German) a concatenated street names
@@ -30,7 +30,6 @@
         <connection>scm:git:git://github.com:javacook/streetdivider.git</connection>
         <developerConnection>scm:git:git@github.com:javacook/streetdivider.git</developerConnection>
         <url>https://github.com/javacook/streetdivider</url>
-        <tag>streetdivider-1.8</tag>
     </scm>
 
     <developers>
@@ -42,7 +41,6 @@
         </developer>
     </developers>
 
-
     <build>
         <plugins>
             <plugin>
@@ -52,6 +50,7 @@
                 <executions>
                     <execution>
                         <id>compile</id>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -64,6 +63,7 @@
                     </execution>
                     <execution>
                         <id>test-compile</id>
+                        <phase>process-test-sources</phase>
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
@@ -117,13 +117,21 @@
                     </sourceDirectories>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
-
-
-    <!-- ============ -->
-    <!-- Dependencies -->
-    <!-- ============ -->
 
     <dependencies>
         <dependency>
@@ -135,6 +143,7 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>2.4.10</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -179,7 +188,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

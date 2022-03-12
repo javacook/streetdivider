@@ -25,13 +25,10 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.codehaus.groovy:groovy-all:3.0.8"
-    implementation "org.openjfx:ja" +
-            "vafx-controls:11"
+    testImplementation "org.codehaus.groovy:groovy-all:3.0.8"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testImplementation "org.spockframework:spock-core:2.1-groovy-3.0"
 }
-
 
 task('jaronly', type: Jar) {
     from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }

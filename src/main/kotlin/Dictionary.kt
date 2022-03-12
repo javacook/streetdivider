@@ -11,17 +11,8 @@ class Dictionary(words: Collection<String>) {
 
     private var treeSet = TreeSet<String>()
 
-    fun add(word: String) {
-        treeSet.add(word)
-    }
-
     fun contains(word: String): Boolean {
         return treeSet.contains(word)
-    }
-
-
-    fun size(): Int {
-        return treeSet.size
     }
 
     init {
