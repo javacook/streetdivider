@@ -4,18 +4,22 @@ import java.nio.charset.Charset
 
 /**
  * Reads the special streets from the file <code>specialstreets.txt</code>. It
- * can be accessed via the public property <code>sreeet</code>
+ * can be accessed via the public property <code>streets</code>
  */
 object StreetReader {
+
+    /**
+     * Public property containing the read streets
+     */
     val streets: List<String>
 
     init {
-        val resource = this::class.java.classLoader.getResource("specialstreets.txt")
-        val readText = resource.readText(Charset.forName("UTF-8"))
+        val resource = javaClass.classLoader.getResource("specialstreets.txt")
+        val readText = resource!!.readText(Charset.forName("UTF-8"))
         var lines: List<String> = arrayListOf()
         // Try all line separator types...
         for (lineSeparator in arrayOf("""\r\n""", """\n""", """\r""")) {
-            lines = readText.split(Regex(lineSeparator)).map({it.trim()})
+            lines = readText.split(Regex(lineSeparator)).map { it.trim() }
             if (lines.size > 1) break
         }
         streets = lines
@@ -25,6 +29,6 @@ object StreetReader {
     }
 }
 
-fun main(args: Array<String>) {
-    println(StreetReader.streets)
-}
+//fun main() {
+//    println(StreetReader.streets)
+//}

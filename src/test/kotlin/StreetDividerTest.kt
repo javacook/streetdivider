@@ -16,13 +16,13 @@ class StreetDividerTest {
                     var input = ""
                     for (i in 0 until len) {
                         val zahl: Int = (Math.random() * 256).toInt()
-                        input += (zahl.absoluteValue % 256).toChar();
+                        input += (zahl.absoluteValue % 256).toChar()
                     }
                     streetDivider.parse(input)
                 }
             }
         }
-        println("Execution time ${time} ms")
+        println("Execution time $time ms")
     }
 
 }
