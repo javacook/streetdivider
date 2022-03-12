@@ -1,3 +1,5 @@
+# Streetdivider 
+
 This library is able to divide (German) a concatenated street names
 consisting of the pure street name, the house number, and its affix
 into its single parts.
@@ -26,9 +28,22 @@ In the examples above you can see the very strange street names of the
 city Manheim. The inner of the city in organized as a matrix with names
 like A4 or C3.
 
-Usage
------
+## Usage
     val streetDivider = StreetDivider()
     println(streetDivider.parse("Gartenstr. 25a"))
     
     -> Location(street=Gartenstr., houseNumber=25, houseNoAffix=a)
+
+### Maven
+
+Repository: [Maven Central](https://repo.maven.apache.org/maven2/de/kotlincook/textmining/streetdivider/)
+
+    <dependency>
+        <groupId>de.kotlincook.textmining</groupId>
+        <artifactId>streetdivider</artifactId>
+        <version>1.8</version>
+    </dependency>
+
+### Gradle 
+
+    implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.8'
