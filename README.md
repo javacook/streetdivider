@@ -65,6 +65,6 @@ This tool has runtime dependencies to
 * `org jetbrains.kotlin:kotlin-stdlib-common:1.6.10`
 * `org jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10`
 * `org jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10`
-  * `org.jetbrains: annotations:13.0`
+* `org.jetbrains: annotations:13.0`
 
 Vulnerabilities were not known on 3/13/2022.
