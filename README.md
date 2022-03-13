@@ -29,10 +29,20 @@ city Manheim. The inner of the city in organized as a matrix with names
 like A4 or C3.
 
 ## Usage
-    val streetDivider = StreetDivider()
-    println(streetDivider.parse("Gartenstr. 25a"))
-    
-    -> Location(street=Gartenstr., houseNumber=25, houseNoAffix=a)
+Kotlin:
+```
+val streetDivider = StreetDivider()
+println(streetDivider.parse("Gartenstr. 25a"))
+``` 
+Java:
+```
+var streetDivider = new StreetDivider();
+System.out.println(streetDivider.parse("Gartenstr. 25a"));
+```
+Ausgabe:
+```
+-> Location(street=Gartenstr., houseNumber=25, houseNoAffix=a)
+```
 
 ### Maven
 
