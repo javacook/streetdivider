@@ -1,17 +1,17 @@
 # Streetdivider 
 
 This library is able to divide a concatenated (German) street name
-consisting of the pure street name, the house number, and its affix
+consisting of the pure street name, the house number, and its affix,
 into its single parts.
 
 Some streets contain a number as a suffix or infix themselves so that 
 it is impossible to decide whether this number is a house number or 
 belongs to the street name. An example is "Straße 101" in Berlin.
 At first glance this seems to be a street "Straße" with 
-house number "101", but in reality the number "101" is part of 
+house number "101", but in fact the number "101" is part of 
 the street name. To make this decision unambiguous the street 
 "Straße 101" is added to a list of "special streets". This list
-can be found in the file "specialstreets.txt" and can/must be updated
+can be found in the file [specialstreets.txt](src/main/resources/specialstreets.txt) and can/must be updated
 periodically. 
 
 More Examples: 
@@ -58,3 +58,13 @@ Repository: [Maven Central](https://repo.maven.apache.org/maven2/de/kotlincook/t
 ```
 implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.8'
 ```
+
+## Security 
+This tool has runtime dependencies to 
+* `org.jetbrains.kotlin:kotlin-stdlib:1.6.10`
+* `org jetbrains.kotlin:kotlin-stdlib-common:1.6.10`
+* `org jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10`
+* `org jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10`
+  * `org.jetbrains: annotations:13.0`
+
+Vulnerabilities were not known on 3/13/2022.
