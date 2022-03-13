@@ -1,6 +1,6 @@
 # Streetdivider 
 
-This library is able to divide (German) a concatenated street names
+This library is able to divide a concatenated (German) street name
 consisting of the pure street name, the house number, and its affix
 into its single parts.
 
