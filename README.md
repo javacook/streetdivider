@@ -39,7 +39,7 @@ Java:
 var streetDivider = new StreetDivider();
 System.out.println(streetDivider.parse("Gartenstr. 25a"));
 ```
-Ausgabe:
+Output:
 ```
 -> Location(street=Gartenstr., houseNumber=25, houseNoAffix=a)
 ```
@@ -47,13 +47,14 @@ Ausgabe:
 ### Maven
 
 Repository: [Maven Central](https://repo.maven.apache.org/maven2/de/kotlincook/textmining/streetdivider/)
-
-    <dependency>
-        <groupId>de.kotlincook.textmining</groupId>
-        <artifactId>streetdivider</artifactId>
-        <version>1.8</version>
-    </dependency>
-
+```
+<dependency>
+    <groupId>de.kotlincook.textmining</groupId>
+    <artifactId>streetdivider</artifactId>
+    <version>1.8</version>
+</dependency>
+```
 ### Gradle 
-
-    implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.8'
+```
+implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.8'
+```
