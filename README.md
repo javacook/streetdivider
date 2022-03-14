@@ -59,6 +59,9 @@ Repository: [Maven Central](https://repo.maven.apache.org/maven2/de/kotlincook/t
 implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.9'
 ```
 
+## Known Bugs
+Please do not use Version 1.8 due to a bug! Symptom: the dot will be deleted in cases like "Markt-Str. 23".
+
 ## Security 
 This tool has runtime dependencies to 
 * `org.jetbrains.kotlin:kotlin-stdlib:1.6.10`
