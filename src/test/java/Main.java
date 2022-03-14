@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Starting Streetdivider");
 
         final StreetDivider streetDivider = new StreetDivider();
-        final Location location = streetDivider.parse("1;2 23a");
+        final Location location = streetDivider.parse("Markt-Str. 25");
         System.out.println(location);
     }
 

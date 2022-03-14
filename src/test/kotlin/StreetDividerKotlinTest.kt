@@ -97,6 +97,7 @@ class StreetDividerTest {
             StreetTestCase("Heideweg 32/5"            , "Heideweg"             , 32      , "/5"),
             StreetTestCase("Heideweg 32 /5"           , "Heideweg"             , 32      , "/5"),
             StreetTestCase("Heideweg 32 / 5"          , "Heideweg"             , 32      , "/ 5"),
+            StreetTestCase("Markt-Str. 25"            , "Markt-Str."           , 25      , null),
             StreetTestCase("1 Maja 3A"                , "1 Maja"               , 3       , "A"),
             StreetTestCase("1. Maja 3a-d"             , "1. Maja"              , 3       , "a-d"),
             StreetTestCase("1Maja 34 a-d"             , "1Maja"                , 34      , "a-d"),
