@@ -51,12 +51,12 @@ Repository: [Maven Central](https://repo.maven.apache.org/maven2/de/kotlincook/t
 <dependency>
     <groupId>de.kotlincook.textmining</groupId>
     <artifactId>streetdivider</artifactId>
-    <version>1.8</version>
+    <version>1.9</version>
 </dependency>
 ```
 ### Gradle 
 ```
-implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.8'
+implementation group: 'de.kotlincook.textmining', name: 'streetdivider', version: '1.9'
 ```
 
 ## Security 
