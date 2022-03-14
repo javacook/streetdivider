@@ -4,7 +4,7 @@
 
     <groupId>de.kotlincook.textmining</groupId>
     <artifactId>streetdivider</artifactId>
-    <version>1.9-SNAPSHOT</version>
+    <version>1.9</version>
     <name>Street Divider</name>
     <url>https://github.com/javacook/streetdivider</url>
     <description>This library is able to divide a concatenated (German) street name
