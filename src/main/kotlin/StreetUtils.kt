@@ -11,7 +11,7 @@ fun String.removeTrailingSpecialChars(): String {
     var result = this
     for (ch in this.reversed()) {
         if (!ch.isLetterOrDigit() && ch != '.') {
-            result = result.dropLast(1)
+            result = result.removeSuffix(ch.toString())
         }
     }
     while (result.endsWith("..")) {
